@@ -3,6 +3,7 @@
 // Check your essays esily
 //=================================
 
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
 namespace SmartEssayChecker.Api
