@@ -24,7 +24,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.Users
             this.loggingBroker = loggingBroker;
         }
 
-       public ValueTask<User> AddUserAsync(User user) =>
-            throw new System.NotImplementedException();
+       public async ValueTask<User> AddUserAsync(User user) =>
+           await this.storageBroker.InsertUserAsync(user);
     }
 }
