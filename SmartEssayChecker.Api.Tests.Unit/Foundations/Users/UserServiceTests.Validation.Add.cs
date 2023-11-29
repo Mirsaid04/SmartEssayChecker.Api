@@ -43,5 +43,48 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Users
             this.loggingBrokerMock.VerifyNoOtherCalls();
             this.storageBrokerMock.VerifyNoOtherCalls();
         }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        public async Task ShouldThrowValidationExceptionOnAddIfUserInvalidAndLogItAsync(
+            string invalidText)
+        {
+            var invalidUser = new User
+            {
+                Name = invalidText,
+            };
+
+            var invalidUserException = new InvalidUserException();
+
+            invalidUserException.AddData(
+                key: nameof(User.Id),
+                values: "Id is required");
+
+            invalidUserException.AddData(
+                key: nameof(User.Name),
+                values: "Text is required");
+
+            var expectedUserValidationException =
+                new UserValidationException(invalidUserException);
+
+            //When
+            ValueTask<User> addUserTask =
+                this.userService.AddUserAsync(invalidUser);
+
+            UserValidationException actualUserValidationException =
+                await Assert.ThrowsAsync<UserValidationException>(addUserTask.AsTask);
+
+            //then 
+            actualUserValidationException.Should().BeEquivalentTo(
+                expectedUserValidationException);
+
+            this.loggingBrokerMock.Verify(broker =>
+            broker.LogError(It.Is(SameExceptionAs(
+            expectedUserValidationException))),Times.Once);
+
+            this.storageBrokerMock.VerifyNoOtherCalls();
+        }
     }
 }
