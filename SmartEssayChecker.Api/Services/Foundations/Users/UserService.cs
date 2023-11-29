@@ -6,6 +6,7 @@
 using SmartEssayChecker.Api.Brokers.Loggings;
 using SmartEssayChecker.Api.Brokers.Storages;
 using SmartEssayChecker.Api.Models.Users;
+using SmartEssayChecker.Api.Services.Foundations.Users.Exceptions;
 using System.Threading.Tasks;
 
 namespace SmartEssayChecker.Api.Services.Foundations.Users
@@ -24,7 +25,28 @@ namespace SmartEssayChecker.Api.Services.Foundations.Users
             this.loggingBroker = loggingBroker;
         }
 
-       public async ValueTask<User> AddUserAsync(User user) =>
-           await this.storageBroker.InsertUserAsync(user);
+       public async ValueTask<User> AddUserAsync(User user)
+        {
+            try
+            {
+                if (user == null)
+                {
+                    throw new NullUserException();
+                }
+
+                return await this.storageBroker.InsertUserAsync(user);        
+    
+            }
+            catch(NullUserException nullUserException)
+            {
+                UserValidationException userValidationException =
+                    new UserValidationException(nullUserException);
+
+                this.loggingBroker.LogError(userValidationException);
+
+                throw userValidationException;
+            }
+
+        }
     }
 }
