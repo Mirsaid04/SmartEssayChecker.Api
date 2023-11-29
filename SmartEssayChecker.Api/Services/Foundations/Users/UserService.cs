@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace SmartEssayChecker.Api.Services.Foundations.Users
 {
-    public class UserService : IUserService
+    internal partial class UserService : IUserService
     {
 
         private readonly IStorageBroker storageBroker;
@@ -25,28 +25,12 @@ namespace SmartEssayChecker.Api.Services.Foundations.Users
             this.loggingBroker = loggingBroker;
         }
 
-       public async ValueTask<User> AddUserAsync(User user)
+        public ValueTask<User> AddUserAsync(User user) =>
+        TryCatch(async () =>
         {
-            try
-            {
-                if (user == null)
-                {
-                    throw new NullUserException();
-                }
+            ValidateUserNotNull(user);
 
-                return await this.storageBroker.InsertUserAsync(user);        
-    
-            }
-            catch(NullUserException nullUserException)
-            {
-                UserValidationException userValidationException =
-                    new UserValidationException(nullUserException);
-
-                this.loggingBroker.LogError(userValidationException);
-
-                throw userValidationException;
-            }
-
-        }
+            return await this.storageBroker.InsertUserAsync(user);
+        });
     }
 }
