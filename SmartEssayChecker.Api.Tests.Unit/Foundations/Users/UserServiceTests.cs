@@ -4,12 +4,15 @@
 //=================================
 
 using System.Data;
+using System.Linq.Expressions;
 using Moq;
 using SmartEssayChecker.Api.Brokers.Loggings;
 using SmartEssayChecker.Api.Brokers.Storages;
 using SmartEssayChecker.Api.Models.Users;
 using SmartEssayChecker.Api.Services.Foundations.Users;
 using Tynamix.ObjectFiller;
+using Xeptions;
+using Xunit.Sdk;
 
 namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Users
 {
@@ -28,6 +31,10 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Users
                 storageBroker: this.storageBrokerMock.Object,
                 loggingBroker: this.loggingBrokerMock.Object);
         }
+
+        private static Expression<Func<Xeption, bool>> SameExceptionAs(Xeption expectedException) =>
+            actualException => actualException.SameExceptionAs(expectedException);
+
 
         private static User CreateRandomUser() =>
             CreateUserFiller().Create();
