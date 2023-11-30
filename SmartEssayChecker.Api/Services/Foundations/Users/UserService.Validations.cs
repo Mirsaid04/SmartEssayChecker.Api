@@ -8,7 +8,7 @@ using System.Data;
 using System.Reflection.Metadata;
 using Microsoft.Extensions.Configuration.UserSecrets;
 using SmartEssayChecker.Api.Models.Users;
-using SmartEssayChecker.Api.Services.Foundations.Users.Exceptions;
+using SmartEssayChecker.Api.Models.Users.Exceptions;
 
 namespace SmartEssayChecker.Api.Services.Foundations.Users
 {

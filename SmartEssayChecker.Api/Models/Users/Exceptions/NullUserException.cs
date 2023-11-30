@@ -5,12 +5,12 @@
 
 using Xeptions;
 
-namespace SmartEssayChecker.Api.Services.Foundations.Users.Exceptions
+namespace SmartEssayChecker.Api.Models.Users.Exceptions
 {
     public class NullUserException : Xeption
     {
         public NullUserException()
-            : base(message: "Address is null.")
+            : base(message: "User is null.")
         { }
     }
 }

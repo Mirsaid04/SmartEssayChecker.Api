@@ -7,12 +7,12 @@ using System.Buffers.Text;
 using Azure.Messaging;
 using Xeptions;
 
-namespace SmartEssayChecker.Api.Services.Foundations.Users.Exceptions
+namespace SmartEssayChecker.Api.Models.Users.Exceptions
 {
     public class InvalidUserException : Xeption
     {
         public InvalidUserException()
-         : base(message: "Address is invalid.")
+         : base(message: "User is invalid.")
         { }
     }
 }

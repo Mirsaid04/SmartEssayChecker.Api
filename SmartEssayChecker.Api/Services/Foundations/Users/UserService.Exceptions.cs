@@ -6,7 +6,7 @@
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using SmartEssayChecker.Api.Models.Users;
-using SmartEssayChecker.Api.Services.Foundations.Users.Exceptions;
+using SmartEssayChecker.Api.Models.Users.Exceptions;
 using Xeptions;
 
 namespace SmartEssayChecker.Api.Services.Foundations.Users
