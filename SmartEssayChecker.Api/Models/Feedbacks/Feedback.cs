@@ -4,6 +4,7 @@
 //=================================
 
 using System;
+using SmartEssayChecker.Api.Models.Essays;
 
 namespace SmartEssayChecker.Api.Models.Feedbacks
 {
@@ -12,6 +13,6 @@ namespace SmartEssayChecker.Api.Models.Feedbacks
         public Guid Id { get; set; }
         public float Mark { get; set; }
         public string Comment { get; set; }
-        public Guid EssayId { get; set; }
+        public Essay EssayId { get; set; }
     }
 }
