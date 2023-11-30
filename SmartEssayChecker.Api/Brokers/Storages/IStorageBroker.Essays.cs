@@ -7,14 +7,15 @@ using SmartEssayChecker.Api.Models.Essays;
 using SmartEssayChecker.Api.Models.Users;
 using System.Threading.Tasks;
 using System;
+using System.Linq;
 
 namespace SmartEssayChecker.Api.Brokers.Storages
 {
     public partial interface IStorageBroker
     {
-        ValueTask<User> InsertEssayAsync(Essay essay);
-        ValueTask<User> SelectAllEssays();
-        ValueTask<User> SelectEssayByIdAsync(Guid essayId);
-        ValueTask<User> DeleteEssayAsync(Essay essay);
+        ValueTask<Essay> InsertEssayAsync(Essay essay);
+        IQueryable<Essay> SelectAllEssays();
+        ValueTask<Essay>SelectEssayByIdAsync(Guid essayId);
+        ValueTask<Essay> DeleteEssayAsync(Essay essay);
     }
 }
