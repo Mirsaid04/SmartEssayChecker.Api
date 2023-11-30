@@ -3,15 +3,16 @@
 // Check your essays esily
 //=================================
 
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using SmartEssayChecker.Api.Brokers.Loggings;
 using SmartEssayChecker.Api.Brokers.Storages;
 using SmartEssayChecker.Api.Models.Users;
-using SmartEssayChecker.Api.Services.Foundations.Users.Exceptions;
-using System.Threading.Tasks;
 
 namespace SmartEssayChecker.Api.Services.Foundations.Users
 {
-    internal partial class UserService : IUserService
+    public partial class UserService : IUserService
     {
 
         private readonly IStorageBroker storageBroker;
@@ -32,5 +33,33 @@ namespace SmartEssayChecker.Api.Services.Foundations.Users
 
             return await this.storageBroker.InsertUserAsync(user);
         });
+
+        public IQueryable<User> RetrieveUsers() =>
+            this.storageBroker.SelectAllUsers();
+
+        public async ValueTask<User> RetrieveUserByIdAsync(Guid userId)
+        {
+            ValidateUserId(userId);
+
+            User user = await this.storageBroker.SelectUserByIdAsync(userId);
+
+            return user;
+        }
+
+        public async ValueTask<User> ModifyUserAsync(User user)
+        {
+            ValidateUserOnModify(user);
+
+            return await this.storageBroker.UpdateUserAsync(user);
+        }
+
+        public async ValueTask<User> RemoveUserAsync(Guid userId)
+        {
+            ValidateUserId(userId);
+
+            User user = await this.storageBroker.SelectUserByIdAsync(userId);
+
+            return await this.storageBroker.DeleteUserAsync(user);
+        }
     }
 }
