@@ -11,6 +11,7 @@ using SmartEssayChecker.Api.Brokers.Storages;
 using SmartEssayChecker.Api.Models.Users;
 using SmartEssayChecker.Api.Services.Foundations.Users;
 using Tynamix.ObjectFiller;
+//using Umbraco.Core.Services.Implement;
 using Xeptions;
 using Xunit.Sdk;
 
@@ -27,7 +28,8 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Users
             this.storageBrokerMock = new Mock<IStorageBroker>();
             this.loggingBrokerMock = new Mock<ILoggingBroker>();
 
-            this.userService = new UserService(
+            this.userService =
+                new UserService(
                 storageBroker: this.storageBrokerMock.Object,
                 loggingBroker: this.loggingBrokerMock.Object);
         }

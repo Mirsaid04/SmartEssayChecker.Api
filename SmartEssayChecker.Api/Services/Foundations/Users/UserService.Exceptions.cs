@@ -7,10 +7,11 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using SmartEssayChecker.Api.Models.Users;
 using SmartEssayChecker.Api.Services.Foundations.Users.Exceptions;
+using Xeptions;
 
 namespace SmartEssayChecker.Api.Services.Foundations.Users
 {
-    internal partial class UserService
+    public partial class UserService
     {
         private delegate ValueTask<User> ReturningUserFunction();
 
@@ -23,14 +24,20 @@ namespace SmartEssayChecker.Api.Services.Foundations.Users
 
             catch (NullUserException nullUserException)
             {
-                UserValidationException userValidationException =
-                    new UserValidationException(nullUserException);
-
-                this.loggingBroker.LogError(userValidationException);
-
-                throw userValidationException;
+               throw CreateAndLogValidationException(nullUserException);
+            }
+            catch(InvalidUserException invalidUserException)
+            {
+                throw CreateAndLogValidationException(invalidUserException);
             }
         }
 
+        private UserValidationException CreateAndLogValidationException(Xeption xeption)
+        {
+            var userValidationException = new UserValidationException(xeption);
+            this.loggingBroker.LogError(userValidationException);
+
+            return userValidationException;
+        }
     }
 }
