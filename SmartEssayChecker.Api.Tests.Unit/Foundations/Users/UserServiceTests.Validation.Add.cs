@@ -6,7 +6,7 @@
 using FluentAssertions;
 using Moq;
 using SmartEssayChecker.Api.Models.Users;
-using SmartEssayChecker.Api.Services.Foundations.Users.Exceptions;
+using SmartEssayChecker.Api.Models.Users.Exceptions;
 using Xunit;
 
 namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Users
