@@ -10,7 +10,7 @@ namespace SmartEssayChecker.Api.Models.Essays.Exceptions
     public class InvalidEssayException : Xeption
     {
         public InvalidEssayException()
-            :base(message: "Essay is invalid.")
+            : base(message: "Essay is invalid.")
         { }
     }
 }

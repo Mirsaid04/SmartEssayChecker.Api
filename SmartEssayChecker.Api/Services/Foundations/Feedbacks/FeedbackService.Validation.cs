@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Data;
-using System.Reflection.Metadata;
 using SmartEssayChecker.Api.Models.Feedbacks;
 using SmartEssayChecker.Api.Models.Feedbacks.Exceptions;
 
@@ -8,7 +6,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.Feedbacks
 {
     public partial class FeedbackService
     {
-        private void ValidationOnAdd(Feedback feedback) 
+        private void ValidationOnAdd(Feedback feedback)
         {
             ValidateFeedbackNotNull(feedback);
 
@@ -41,25 +39,25 @@ namespace SmartEssayChecker.Api.Services.Foundations.Feedbacks
             Message = "Mark is required"
         };
 
-        private static void ValidateFeedbackNotNull(Feedback feedback) 
+        private static void ValidateFeedbackNotNull(Feedback feedback)
         {
-            if(feedback == null)
+            if (feedback == null)
             {
                 throw new NullFeedbackException();
             }
         }
 
-        private static void Validate(params(dynamic Rule, string Parameter)[] validations)
+        private static void Validate(params (dynamic Rule, string Parameter)[] validations)
         {
             var invalidFeedbackException = new InvalidFeedbackException();
 
-            foreach(( dynamic rule, string parameter) in validations)
+            foreach ((dynamic rule, string parameter) in validations)
             {
                 if (rule.Condition)
                 {
-                invalidFeedbackException.UpsertDataList(
-                    key: parameter,
-                    value: rule.Message);
+                    invalidFeedbackException.UpsertDataList(
+                        key: parameter,
+                        value: rule.Message);
                 }
             }
             invalidFeedbackException.ThrowIfContainsErrors();

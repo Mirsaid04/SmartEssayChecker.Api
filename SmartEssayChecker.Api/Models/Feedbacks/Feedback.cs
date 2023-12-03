@@ -13,6 +13,6 @@ namespace SmartEssayChecker.Api.Models.Feedbacks
         public Guid Id { get; set; }
         public float Mark { get; set; }
         public string Comment { get; set; }
-        public Essay EssayId { get; set; }
+        public Essay Essay { get; set; }
     }
 }

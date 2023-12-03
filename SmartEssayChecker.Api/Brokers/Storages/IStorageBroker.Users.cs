@@ -3,10 +3,10 @@
 // Check your essays esily
 //=================================
 
-using SmartEssayChecker.Api.Models.Users;
-using System.Threading.Tasks;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
+using SmartEssayChecker.Api.Models.Users;
 
 namespace SmartEssayChecker.Api.Brokers.Storages
 {

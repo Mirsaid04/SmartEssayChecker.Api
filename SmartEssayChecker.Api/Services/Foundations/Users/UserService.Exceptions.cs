@@ -3,7 +3,6 @@
 // Check your essays esily
 //=================================
 
-using System.Net.Sockets;
 using System.Threading.Tasks;
 using SmartEssayChecker.Api.Models.Users;
 using SmartEssayChecker.Api.Models.Users.Exceptions;
@@ -24,9 +23,9 @@ namespace SmartEssayChecker.Api.Services.Foundations.Users
 
             catch (NullUserException nullUserException)
             {
-               throw CreateAndLogValidationException(nullUserException);
+                throw CreateAndLogValidationException(nullUserException);
             }
-            catch(InvalidUserException invalidUserException)
+            catch (InvalidUserException invalidUserException)
             {
                 throw CreateAndLogValidationException(invalidUserException);
             }

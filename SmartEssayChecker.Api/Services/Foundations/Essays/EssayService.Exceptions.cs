@@ -5,8 +5,8 @@
 
 using System.Threading.Tasks;
 using SmartEssayChecker.Api.Models.Essays;
-using Xeptions;
 using SmartEssayChecker.Api.Models.Essays.Exceptions;
+using Xeptions;
 
 namespace SmartEssayChecker.Api.Services.Foundations.Essays
 {

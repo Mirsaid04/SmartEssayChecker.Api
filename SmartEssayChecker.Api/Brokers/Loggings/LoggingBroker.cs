@@ -3,8 +3,8 @@
 // Check your essays esily
 //=================================
 
-using Microsoft.Extensions.Logging;
 using System;
+using Microsoft.Extensions.Logging;
 
 namespace SmartEssayChecker.Api.Brokers.Loggings
 {

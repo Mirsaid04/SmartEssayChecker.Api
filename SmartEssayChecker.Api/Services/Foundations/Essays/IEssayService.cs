@@ -1,6 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
-using System;
 using SmartEssayChecker.Api.Models.Essays;
 
 namespace SmartEssayChecker.Api.Services.Foundations.Essays

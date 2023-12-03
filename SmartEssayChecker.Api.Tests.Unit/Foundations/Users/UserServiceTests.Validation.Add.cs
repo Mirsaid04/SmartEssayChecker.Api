@@ -82,7 +82,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Users
 
             this.loggingBrokerMock.Verify(broker =>
             broker.LogError(It.Is(SameExceptionAs(
-            expectedUserValidationException))),Times.Once);
+            expectedUserValidationException))), Times.Once);
 
             this.storageBrokerMock.VerifyNoOtherCalls();
         }

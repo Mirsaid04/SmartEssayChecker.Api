@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Storage;
 using SmartEssayChecker.Api.Models.Feedbacks;
 
 namespace SmartEssayChecker.Api.Services.Foundations.Feedbacks

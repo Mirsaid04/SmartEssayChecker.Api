@@ -3,11 +3,11 @@
 // Check your essays esily
 //=================================
 
-using Microsoft.EntityFrameworkCore;
-using SmartEssayChecker.Api.Models.Essays;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
-using System;
+using Microsoft.EntityFrameworkCore;
+using SmartEssayChecker.Api.Models.Essays;
 
 namespace SmartEssayChecker.Api.Brokers.Storages
 {

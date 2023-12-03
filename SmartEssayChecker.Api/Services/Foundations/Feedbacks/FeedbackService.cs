@@ -31,15 +31,15 @@ namespace SmartEssayChecker.Api.Services.Foundations.Feedbacks
         public IQueryable<Feedback> RetrieveFeedbacksAsync() =>
             this.storageBroker.SelectAllFeedbackAsync();
 
-       public ValueTask<Feedback> RetrieveFeedbackByIdAsync(Guid feedbackId) =>
-       TryCatch(async () =>
-       {
-           ValidateFeedbackId(feedbackId);
+        public ValueTask<Feedback> RetrieveFeedbackByIdAsync(Guid feedbackId) =>
+        TryCatch(async () =>
+        {
+            ValidateFeedbackId(feedbackId);
 
-           Feedback feedback = await this.storageBroker.SelectFeedbackByIdAsync(feedbackId);
+            Feedback feedback = await this.storageBroker.SelectFeedbackByIdAsync(feedbackId);
 
-           return feedback;
-       });
+            return feedback;
+        });
         public ValueTask<Feedback> RemoveFeedbackAsync(Guid feedbackId) =>
         TryCatch(async () =>
         {
