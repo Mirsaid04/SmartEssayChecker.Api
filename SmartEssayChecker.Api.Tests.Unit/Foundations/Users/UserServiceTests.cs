@@ -3,7 +3,6 @@
 // Check your essays esily
 //=================================
 
-using System.Data;
 using System.Linq.Expressions;
 using Moq;
 using SmartEssayChecker.Api.Brokers.Loggings;
@@ -11,9 +10,7 @@ using SmartEssayChecker.Api.Brokers.Storages;
 using SmartEssayChecker.Api.Models.Users;
 using SmartEssayChecker.Api.Services.Foundations.Users;
 using Tynamix.ObjectFiller;
-//using Umbraco.Core.Services.Implement;
 using Xeptions;
-using Xunit.Sdk;
 
 namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Users
 {
