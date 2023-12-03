@@ -3,8 +3,6 @@
 // Check your essays esily
 //=================================
 
-using System.Buffers.Text;
-using Azure.Messaging;
 using Xeptions;
 
 namespace SmartEssayChecker.Api.Models.Users.Exceptions

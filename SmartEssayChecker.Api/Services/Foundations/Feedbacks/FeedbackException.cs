@@ -20,11 +20,11 @@ namespace SmartEssayChecker.Api.Services.Foundations.Feedbacks
             {
                 return await returningFeedbackFunctions();
             }
-            catch(NullFeedbackException nullFeedbackException)
+            catch (NullFeedbackException nullFeedbackException)
             {
                 throw CreateAndLogValidationException(nullFeedbackException);
             }
-            catch(InvalidFeedbackException invalidFeedbackException)
+            catch (InvalidFeedbackException invalidFeedbackException)
             {
                 throw CreateAndLogValidationException(invalidFeedbackException);
             }
@@ -37,5 +37,5 @@ namespace SmartEssayChecker.Api.Services.Foundations.Feedbacks
 
             return feedbackValidationException;
         }
-     }
+    }
 }

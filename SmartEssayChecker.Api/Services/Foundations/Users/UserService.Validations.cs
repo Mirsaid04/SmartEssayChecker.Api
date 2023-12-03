@@ -4,9 +4,6 @@
 //=================================
 
 using System;
-using System.Data;
-using System.Reflection.Metadata;
-using Microsoft.Extensions.Configuration.UserSecrets;
 using SmartEssayChecker.Api.Models.Users;
 using SmartEssayChecker.Api.Models.Users.Exceptions;
 
@@ -57,11 +54,11 @@ namespace SmartEssayChecker.Api.Services.Foundations.Users
             }
         }
 
-        private static void Validate(params (dynamic Rule , string Parameter)[] validations)
+        private static void Validate(params (dynamic Rule, string Parameter)[] validations)
         {
             var invalidUserException = new InvalidUserException();
 
-            foreach (( dynamic rule , string parameter ) in validations )
+            foreach ((dynamic rule, string parameter) in validations)
             {
                 if (rule.Condition)
                 {

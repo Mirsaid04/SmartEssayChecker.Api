@@ -63,9 +63,8 @@ namespace SmartEssayChecker.Api.Brokers.Storages
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = "Data source = SmartEssayChecker.db";
-            optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-            optionsBuilder.UseSqlite(connectionString);
+            string connectionString = this.configuration.GetConnectionString(name: "DefaultConnection");
+            optionsBuilder.UseSqlServer(connectionString);
         }
     }
 }

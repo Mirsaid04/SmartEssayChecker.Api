@@ -3,11 +3,10 @@
 // Check your essays esily
 //=================================
 
-using SmartEssayChecker.Api.Models.Essays;
-using SmartEssayChecker.Api.Models.Users;
-using System.Threading.Tasks;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
+using SmartEssayChecker.Api.Models.Essays;
 
 namespace SmartEssayChecker.Api.Brokers.Storages
 {
@@ -15,7 +14,7 @@ namespace SmartEssayChecker.Api.Brokers.Storages
     {
         ValueTask<Essay> InsertEssayAsync(Essay essay);
         IQueryable<Essay> SelectAllEssays();
-        ValueTask<Essay>SelectEssayByIdAsync(Guid essayId);
+        ValueTask<Essay> SelectEssayByIdAsync(Guid essayId);
         ValueTask<Essay> DeleteEssayAsync(Essay essay);
     }
 }
