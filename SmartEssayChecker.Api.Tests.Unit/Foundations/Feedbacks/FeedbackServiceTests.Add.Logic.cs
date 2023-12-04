@@ -16,7 +16,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Feedbacks
         [Fact]
         public async Task ShouldAddFeedbackAsync()
         {
-            //given
+            // given
             Feedback randomFeedback = CreateRandomFeedback();
             Feedback inputFeedback = randomFeedback;
             Feedback persistedFeedback = inputFeedback;
@@ -26,12 +26,10 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Feedbacks
             broker.InsertFeedbackAsync(inputFeedback))
                 .ReturnsAsync(inputFeedback);
 
-            //when
-
+            // when
             Feedback actualFeedback = await this.feedbackService.AddFeedbackAsync(inputFeedback);
 
-            //then
-
+            // then
             actualFeedback.Should().BeEquivalentTo(expectedFeedback);
 
             this.storageBrokerMock.Verify(broker =>

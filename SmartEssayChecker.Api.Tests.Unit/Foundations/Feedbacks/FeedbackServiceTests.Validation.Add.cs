@@ -51,6 +51,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Feedbacks
         public async Task ShouldThrowValidationExceptionOnAddIfFeedbackInvalidAndLogItAsync(
             string invalidText)
         {
+            //given
             var invalidFeedback = new Feedback
             {
                 Comment = invalidText,

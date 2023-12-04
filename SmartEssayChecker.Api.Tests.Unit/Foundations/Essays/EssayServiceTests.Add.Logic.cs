@@ -16,7 +16,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Essays
         [Fact]
         public async Task ShouldAddEssayAsync()
         {
-            // given
+            //given
             Essay randomEssay = CreateRandomEssay();
             Essay inputEssay = randomEssay;
             Essay persistedEssay = inputEssay;
@@ -26,7 +26,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Essays
             broker.InsertEssayAsync(inputEssay))
             .ReturnsAsync(expectedEssay);
 
-            // when
+            //when
             Essay actualEssay = await this.essayService.AddEssayAsync(inputEssay);
 
             //then

@@ -51,6 +51,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Users
         public async Task ShouldThrowValidationExceptionOnAddIfUserInvalidAndLogItAsync(
             string invalidText)
         {
+            //given
             var invalidUser = new User
             {
                 Name = invalidText,
@@ -69,7 +70,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Users
             var expectedUserValidationException =
                 new UserValidationException(invalidUserException);
 
-            //When
+            //when
             ValueTask<User> addUserTask =
                 this.userService.AddUserAsync(invalidUser);
 
