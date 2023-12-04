@@ -20,7 +20,6 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Essays
                 new EssayValidationException(nullEssayException);
 
             // when
-
             ValueTask<Essay> addEssayTask =
                 this.essayService.AddEssayAsync(nullEssay);
 
@@ -38,6 +37,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Essays
             this.loggingBrokerMock.VerifyNoOtherCalls();
             this.storageBrokerMock.VerifyNoOtherCalls();
         }
+
         [Theory]
         [InlineData(null)]
         [InlineData("")]
@@ -45,6 +45,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Essays
         public async Task ShoudlThrowValidationExceptionOnAddIfEssayInvalidAndLogItAsync(
           string invalidText)
         {
+            //given
             var invalidEssay = new Essay
             {
                 Content = invalidText,
@@ -63,7 +64,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Essays
             var expectedEssayValidationException =
                 new EssayValidationException(invalidEssayException);
 
-            // when
+            //when
             ValueTask<Essay> addEssayTask =
                 this.essayService.AddEssayAsync(invalidEssay);
 
