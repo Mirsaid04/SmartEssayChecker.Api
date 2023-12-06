@@ -4,6 +4,7 @@
 //=================================
 
 using System;
+using SmartEssayChecker.Api.Models.Feedbacks;
 using SmartEssayChecker.Api.Models.Users;
 
 namespace SmartEssayChecker.Api.Models.Essays
@@ -12,6 +13,8 @@ namespace SmartEssayChecker.Api.Models.Essays
     {
         public Guid EssayId { get; set; }
         public string Content { get; set; }
-        public User UserId { get; set; }
+        public Guid UserId { get; set; }
+        public Feedback feedback { get; set; }
+        public User User { get; set; }
     }
 }

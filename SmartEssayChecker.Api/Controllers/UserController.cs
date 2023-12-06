@@ -37,16 +37,16 @@ namespace SmartEssayChecker.Api.Controllers
             {
                 return BadRequest(userValidationException.InnerException);
             }
-            catch(UserDependencyValidationException userDependencyValidationException)
-                when(userDependencyValidationException.InnerException is AlreadyExistsUserException)
+            catch (UserDependencyValidationException userDependencyValidationException)
+                when (userDependencyValidationException.InnerException is AlreadyExistsUserException)
             {
                 return Conflict(userDependencyValidationException.InnerException);
             }
-            catch(UserDependencyException  userDependencyException)
+            catch (UserDependencyException userDependencyException)
             {
                 return InternalServerError(userDependencyException.InnerException);
             }
-            catch(UserServiceException  userServiceException)
+            catch (UserServiceException userServiceException)
             {
                 return InternalServerError(userServiceException.InnerException);
             }
@@ -61,20 +61,20 @@ namespace SmartEssayChecker.Api.Controllers
                 return await this.userService.RetrieveUserByIdAsync(userId);
             }
             catch (UserDependencyException userDependencyException)
-            { 
+            {
                 return InternalServerError(userDependencyException.InnerException);
             }
-            catch(UserValidationException userValidationException)
+            catch (UserValidationException userValidationException)
                 when (userValidationException.InnerException is InvalidUserException)
             {
                 return BadRequest(userValidationException.InnerException);
             }
-            catch(UserValidationException userValidationException)
-                when(userValidationException.InnerException is NotFoundUserException)
+            catch (UserValidationException userValidationException)
+                when (userValidationException.InnerException is NotFoundUserException)
             {
                 return NotFound(userValidationException.InnerException);
             }
-            catch(UserServiceException userServiceException)
+            catch (UserServiceException userServiceException)
             {
                 return InternalServerError(userServiceException.InnerException);
             }
@@ -101,7 +101,7 @@ namespace SmartEssayChecker.Api.Controllers
             }
         }
 
-        [HttpPut] 
+        [HttpPut]
 
         public async ValueTask<ActionResult<User>> PutUserAsync(User user)
         {
@@ -112,24 +112,24 @@ namespace SmartEssayChecker.Api.Controllers
 
                 return Ok(modifyUser);
             }
-            catch(UserValidationException userValidationException)
-                when(userValidationException.InnerException is NotFoundUserException)
+            catch (UserValidationException userValidationException)
+                when (userValidationException.InnerException is NotFoundUserException)
             {
                 return NotFound(userValidationException.InnerException);
             }
-            catch(UserValidationException userValidationException)
+            catch (UserValidationException userValidationException)
             {
                 return BadRequest(userValidationException.InnerException);
             }
-            catch(UserDependencyValidationException userDependencyValidationException)
+            catch (UserDependencyValidationException userDependencyValidationException)
             {
                 return Conflict(userDependencyValidationException.InnerException);
             }
-            catch(UserDependencyException userDependencyException)
+            catch (UserDependencyException userDependencyException)
             {
                 return InternalServerError(userDependencyException.InnerException);
             }
-            catch(UserServiceException userServiceException)
+            catch (UserServiceException userServiceException)
             {
                 return InternalServerError(userServiceException.InnerException);
             }
@@ -147,29 +147,29 @@ namespace SmartEssayChecker.Api.Controllers
 
                 return Ok(deleteUser);
             }
-            catch(UserValidationException userValidationException)
-                when(userValidationException.InnerException is NotFoundUserException)
+            catch (UserValidationException userValidationException)
+                when (userValidationException.InnerException is NotFoundUserException)
             {
                 return NotFound(userValidationException.InnerException);
             }
-            catch(UserValidationException userValidationException)
+            catch (UserValidationException userValidationException)
             {
                 return BadRequest(userValidationException.InnerException);
             }
-            catch(UserDependencyValidationException userDependencyValidationException)
-                when(userDependencyValidationException.InnerException is LockedUserException)
+            catch (UserDependencyValidationException userDependencyValidationException)
+                when (userDependencyValidationException.InnerException is LockedUserException)
             {
                 return Locked(userDependencyValidationException.InnerException);
             }
-            catch(UserDependencyValidationException userDependencyValidationException)
+            catch (UserDependencyValidationException userDependencyValidationException)
             {
                 return BadRequest(userDependencyValidationException.InnerException);
             }
-            catch(UserDependencyException userDependencyException)
+            catch (UserDependencyException userDependencyException)
             {
                 return InternalServerError(userDependencyException.InnerException);
             }
-            catch(UserServiceException userServiceException)
+            catch (UserServiceException userServiceException)
             {
                 return InternalServerError(userServiceException.InnerException);
             }

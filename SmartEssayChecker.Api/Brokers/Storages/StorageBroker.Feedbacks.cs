@@ -21,7 +21,7 @@ namespace SmartEssayChecker.Api.Brokers.Storages
         public IQueryable<Feedback> SelectAllFeedbacks() =>
             SelectAll<Feedback>().AsQueryable();
 
-        public async ValueTask<Feedback> SelectFeedbackById(Guid feedbackId) =>
+        public async ValueTask<Feedback> SelectFeedbackByIdAsync(Guid feedbackId) =>
             await SelectAsync<Feedback>(feedbackId);
 
         public async ValueTask<Feedback> DeleteFeedbackAsync(Feedback feedback) =>

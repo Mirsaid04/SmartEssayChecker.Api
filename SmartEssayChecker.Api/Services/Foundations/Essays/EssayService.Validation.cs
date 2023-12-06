@@ -33,7 +33,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.Essays
 
         private static dynamic IsInvalid(string text) => new
         {
-            Condition = String.IsNullOrWhiteSpace(text) == default,
+            Condition = String.IsNullOrWhiteSpace(text),
             Message = "Text is required"
         };
 

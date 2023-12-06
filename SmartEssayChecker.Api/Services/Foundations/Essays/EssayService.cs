@@ -30,7 +30,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.Essays
         public ValueTask<Essay> AddEssayAsync(Essay essay) =>
         TryCatch(async () =>
         {
-            ValidateEssayNotNull(essay);
+            ValidationOnAdd(essay);
 
             return await this.storageBroker.InsertEssayAsync(essay);
         });
