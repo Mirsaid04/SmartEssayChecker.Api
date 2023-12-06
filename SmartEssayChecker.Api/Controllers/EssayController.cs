@@ -3,6 +3,7 @@
 // Check your essays esily
 //=================================
 
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -36,6 +37,23 @@ namespace SmartEssayChecker.Api.Controllers
             {
                 return BadRequest(essayValidationException.InnerException);
             }
+            catch (EssayDependencyValidationException essayDependencyValidationException)
+                  when (essayDependencyValidationException.InnerException is AlreadyExitsEssayException)
+            {
+                return Conflict(essayDependencyValidationException.InnerException);
+            }
+            catch (EssayDependencyValidationException essayDependencyValidationException)
+            {
+                return BadRequest(essayDependencyValidationException.InnerException);
+            }
+            catch (EssayDependencyException essayDependencyException)
+            {
+                return InternalServerError(essayDependencyException.InnerException);
+            }
+            catch (EssayServiceException essayServiceException)
+            {
+                return InternalServerError(essayServiceException.InnerException);
+            }
         }
 
         [HttpGet]
@@ -44,9 +62,79 @@ namespace SmartEssayChecker.Api.Controllers
         {
             try
             {
-                IQueryable<Essay> allEssays = this.essayService.RetrieveAllEssays(); 
+                IQueryable<Essay> allEssays = this.essayService.RetrieveAllEssays();
 
                 return Ok(allEssays);
+            }
+            catch (EssayDependencyException essayDependencyException)
+            {
+                return InternalServerError(essayDependencyException);
+            }
+            catch (EssayServiceException essayServiceException)
+            {
+                return InternalServerError(essayServiceException);
+            }
+        }
+
+        [HttpGet("{essayId}")]
+
+        public async ValueTask<ActionResult<Essay>> GetEssayById(Guid essayId)
+        {
+            try
+            {
+                return await this.essayService.RetrieveEssayByIdAsync(essayId);
+            }
+            catch (EssayDependencyException essayDependencyException)
+            {
+                return InternalServerError(essayDependencyException.InnerException);
+            }
+            catch (EssayValidationException essayValidationException)
+                 when (essayValidationException.InnerException is NotFoundEssayException)
+            {
+                return NotFound(essayValidationException.InnerException);
+            }
+            catch (EssayServiceException essayServiceException)
+            {
+                return InternalServerError(essayServiceException.InnerException);
+            }
+        }
+
+        [HttpDelete("{essayId}")]
+
+        public async ValueTask<ActionResult<Essay>> DeleteEssayByIdAsync(Guid essayId)
+        {
+            try
+            {
+                Essay deletedEssay =
+                    await this.essayService.RetrieveEssayByIdAsync(essayId);
+
+                return Ok(deletedEssay);
+            }
+            catch (EssayValidationException essayValidationException)
+                when (essayValidationException.InnerException is NotFoundEssayException)
+            {
+                return NotFound(essayValidationException.InnerException);
+            }
+            catch (EssayValidationException essayValidationException)
+            {
+                return BadRequest(essayValidationException.InnerException);
+            }
+            catch (EssayDependencyValidationException essayDependencyValidationException)
+                when (essayDependencyValidationException.InnerException is LockedEssayException)
+            {
+                return Locked(essayDependencyValidationException.InnerException);
+            }
+            catch (EssayDependencyValidationException essayDependencyValidationException)
+            {
+                return BadRequest(essayDependencyValidationException.InnerException);
+            }
+            catch (EssayDependencyException essayDependencyException)
+            {
+                return InternalServerError(essayDependencyException.InnerException);
+            }
+            catch (EssayServiceException essayServiceException)
+            {
+                return InternalServerError(essayServiceException.InnerException);
             }
         }
     }

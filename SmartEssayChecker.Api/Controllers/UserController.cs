@@ -4,7 +4,6 @@
 //=================================
 
 using System.Threading.Tasks;
-using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using RESTFulSense.Controllers;
 using SmartEssayChecker.Api.Models.Users;
@@ -32,7 +31,7 @@ namespace SmartEssayChecker.Api.Controllers
 
                 return Created(persistedUser);
             }
-            catch(UserValidationException userValidationException)
+            catch (UserValidationException userValidationException)
             {
                 return BadRequest(userValidationException.InnerException);
             }
