@@ -27,10 +27,10 @@ namespace SmartEssayChecker.Api.Services.Foundations.Feedbacks
             Message = "Id is required"
         };
 
-        private static dynamic IsInvalid(string text) => new
+        private static dynamic IsInvalid(string comment) => new
         {
-            Condition = string.IsNullOrWhiteSpace(text) == default,
-            Message = "Text is required"
+            Condition = string.IsNullOrWhiteSpace(comment),
+            Message = "Comment is required"
         };
 
         private static dynamic IsInvalid(float number) => new

@@ -25,7 +25,12 @@ namespace SmartEssayChecker.Api
             services.AddControllers().AddOData(options =>
                     options.Select().Filter().OrderBy().Count().Expand());
 
-            services.AddDbContext<StorageBroker>();
+            services.AddTransient<IStorageBroker, StorageBroker>();
+            services.AddTransient<ILoggingBroker, LoggingBroker>();
+
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IEssayService, EssayService>();
+            services.AddTransient<IFeedbackService, FeedbackService>();
 
             services.AddCors(option =>
             {
@@ -48,8 +53,6 @@ namespace SmartEssayChecker.Api
                     });
             });
 
-            AddBrokers(services);
-            AddFoundationServices(services);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -66,17 +69,6 @@ namespace SmartEssayChecker.Api
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
                 endpoints.MapControllers());
-        }
-        private static void AddBrokers(IServiceCollection services)
-        {
-            services.AddTransient<IStorageBroker, StorageBroker>();
-            services.AddTransient<ILoggingBroker, LoggingBroker>();
-        }
-        private static void AddFoundationServices(IServiceCollection services)
-        {
-            services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IEssayService, EssayService>();
-            services.AddTransient<IFeedbackService, FeedbackService>();
         }
     }
 }

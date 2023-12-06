@@ -29,7 +29,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.Users
         public ValueTask<User> AddUserAsync(User user) =>
         TryCatch(async () =>
         {
-            ValidateUserNotNull(user);
+            ValidationOnAdd(user);
 
             return await this.storageBroker.InsertUserAsync(user);
         });

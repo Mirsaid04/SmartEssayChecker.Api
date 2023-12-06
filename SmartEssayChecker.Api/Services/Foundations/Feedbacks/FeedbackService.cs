@@ -23,13 +23,13 @@ namespace SmartEssayChecker.Api.Services.Foundations.Feedbacks
         public ValueTask<Feedback> AddFeedbackAsync(Feedback feedback) =>
         TryCatch(async () =>
         {
-            ValidateFeedbackNotNull(feedback);
+            ValidationOnAdd(feedback);
 
             return await this.storageBroker.InsertFeedbackAsync(feedback);
         });
 
         public IQueryable<Feedback> RetrieveFeedbacksAsync() =>
-            this.storageBroker.SelectAllFeedbackAsync();
+            this.storageBroker.SelectAllFeedbacks();
 
         public ValueTask<Feedback> RetrieveFeedbackByIdAsync(Guid feedbackId) =>
         TryCatch(async () =>

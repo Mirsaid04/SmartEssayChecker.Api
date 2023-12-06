@@ -4,6 +4,8 @@
 //=================================
 
 using System;
+using System.Collections.Generic;
+using SmartEssayChecker.Api.Models.Essays;
 
 namespace SmartEssayChecker.Api.Models.Users
 {
@@ -11,5 +13,6 @@ namespace SmartEssayChecker.Api.Models.Users
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public ICollection<Essay> Essays { get; set; }
     }
 }
