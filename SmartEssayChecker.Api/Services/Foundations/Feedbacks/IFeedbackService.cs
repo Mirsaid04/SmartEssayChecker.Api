@@ -7,15 +7,24 @@ namespace SmartEssayChecker.Api.Services.Foundations.Feedbacks
 {
     public interface IFeedbackService
     {
-        /// <summary>
-        /// Save into database
-        /// </summary>
-        /// <param name="feedback"></param>
-        /// <returns></returns>
-        /// <exception cref="Models.Feedbacks.Exceptions.FeedbackValidationException"></exception> 
+        ///  /// <exception cref="Models.Feedbacks.Exceptions.FeedbackValidationException"></exception>
+        /// <exception cref="Models.Feedbacks.Exceptions.FeedbackDependencyValidationException"></exception>
+        /// <exception cref="Models.Feedbacks.Exceptions.FeedbackDependencyException"></exception>
+        /// <exception cref="Models.Feedbacks.Exceptions.FeedbackServiceException"></exception>
         ValueTask<Feedback> AddFeedbackAsync(Feedback feedback);
+        /// <exception cref="Models.Feedbacks.Exceptions.FeedbackDependencyException"></exception>
+        /// <exception cref="Models.Feedbacks.Exceptions.FeedbackServiceException"></exception>  
         IQueryable<Feedback> RetrieveFeedbacksAsync();
+        /// <exception cref="Models.Feedbacks.Exceptions.FeedbackDependencyException"></exception>
+        /// <exception cref="Models.Feedbacks.Exceptions.FeedbackServiceException"></exception>
         ValueTask<Feedback> RetrieveFeedbackByIdAsync(Guid feedbackId);
+        /// <exception cref="Models.Feedbacks.Exceptions.FeedbackDependencyValidationException"></exception>
+        /// <exception cref="Models.Feedbacks.Exceptions.FeedbackDependencyException"></exception>
+        /// <exception cref="Models.Feedbacks.Exceptions.FeedbackServiceException"></exception>
         ValueTask<Feedback> RemoveFeedbackAsync(Guid feedbackId);
+        /// <exception cref="Models.Feedbacks.Exceptions.FeedbackValidationException"></exception>
+        /// <exception cref="Models.Feedbacks.Exceptions.FeedbackDependencyValidationException"></exception>
+        /// <exception cref="Models.Feedbacks.Exceptions.FeedbackDependencyException"></exception>
+        /// <exception cref="Models.Feedbacks.Exceptions.FeedbackServiceException"></exception>
     }
 }

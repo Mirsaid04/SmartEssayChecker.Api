@@ -7,15 +7,24 @@ namespace SmartEssayChecker.Api.Services.Foundations.Essays
 {
     public interface IEssayService
     {
-        /// <summary>
-        /// Save into Database
-        /// </summary>
-        /// <param name="essay"></param>
-        /// <returns></returns>
-        /// <exception cref="Models.Essays.Exceptions.EssayValidationException"></exception> 
+        ///  /// <exception cref="Models.Essays.Exceptions.EssayValidationException"></exception>
+        /// <exception cref="Models.Essays.Exceptions.EssayDependencyValidationException"></exception>
+        /// <exception cref="Models.Essays.Exceptions.EssayDependencyException"></exception>
+        /// <exception cref="Models.Essays.Exceptions.EssayServiceException"></exception>
         public ValueTask<Essay> AddEssayAsync(Essay essay);
+        /// <exception cref="Models.Essays.Exceptions.EssayDependencyException"></exception>
+        /// <exception cref="Models.Essays.Exceptions.EssayServiceException"></exception>     
         public IQueryable<Essay> RetrieveAllEssays();
+        /// <exception cref="Models.Essays.Exceptions.EssayDependencyException"></exception>
+        /// <exception cref="Models.Essays.Exceptions.EssayServiceException"></exception> 
         public ValueTask<Essay> RetrieveEssayByIdAsync(Guid essayId);
+        /// <exception cref="Models.Essays.Exceptions.EssayDependencyValidationException"></exception>
+        /// <exception cref="Models.Essays.Exceptions.EssayDependencyException"></exception>
+        /// <exception cref="Models.Essays.Exceptions.EssayServiceException"></exception>
         public ValueTask<Essay> RemoveEssayAsync(Guid essay);
+        /// <exception cref="Models.Essays.Exceptions.EssayValidationException"></exception>
+        /// <exception cref="Models.Essays.Exceptions.EssayDependencyValidationException"></exception>
+        /// <exception cref="Models.Essays.Exceptions.EssayDependencyException"></exception>
+        /// <exception cref="Models.Essays.Exceptions.EssayServiceException"></exception>
     }
 }

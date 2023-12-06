@@ -12,17 +12,25 @@ namespace SmartEssayChecker.Api.Services.Foundations.Users
 {
     public interface IUserService
     {
-        /// <summary>
-        /// Save into Database
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
         /// <exception cref="Models.Users.Exceptions.UserValidationException"></exception>
-
+        /// <exception cref="Models.Users.Exceptions.UserDependencyValidationException"></exception>
+        /// <exception cref="Models.Users.Exceptions.UserDependencyException"></exception>
+        /// <exception cref="Models.Users.Exceptions.UserServiceException"></exception>
         ValueTask<User> AddUserAsync(User user);
+        /// <exception cref="Models.Users.Exceptions.UserDependencyException"></exception>
+        /// <exception cref="Models.Users.Exceptions.UserServiceException"></exception> 
         IQueryable<User> RetrieveUsers();
+        /// <exception cref="Models.Users.Exceptions.UserDependencyException"></exception>
+        /// <exception cref="Models.Users.Exceptions.UserServiceException"></exception>
         ValueTask<User> RetrieveUserByIdAsync(Guid userId);
-        ValueTask<User> ModifyUserAsync(User user);
+        /// <exception cref="Models.Users.Exceptions.UserDependencyValidationException"></exception>
+        /// <exception cref="Models.Users.Exceptions.UserDependencyException"></exception>
+        /// <exception cref="Models.Users.Exceptions.UserServiceException"></exception>
         ValueTask<User> RemoveUserAsync(Guid userId);
+        /// <exception cref="Models.Users.Exceptions.UserValidationException"></exception>
+        /// <exception cref="Models.Users.Exceptions.UserDependencyValidationException"></exception>
+        /// <exception cref="Models.Users.Exceptions.UserDependencyException"></exception>
+        /// <exception cref="Models.Users.Exceptions.UserServiceException"></exception>
+        ValueTask<User> ModifyUserAsync(User user);
     }
 }
