@@ -3,15 +3,17 @@
 // Check your essays esily
 //=================================
 
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using EFxceptions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using SmartEssayChecker.Api.Models.Feedbacks;
 
 namespace SmartEssayChecker.Api.Brokers.Storages
 {
-    public partial class StorageBroker : EFxceptionsContext
+    public partial class StorageBroker : EFxceptionsContext, IStorageBroker
     {
         private readonly IConfiguration configuration;
 
@@ -65,6 +67,16 @@ namespace SmartEssayChecker.Api.Brokers.Storages
         {
             string connectionString = this.configuration.GetConnectionString(name: "DefaultConnection");
             optionsBuilder.UseSqlServer(connectionString);
+        }
+
+        IQueryable<Feedback> IStorageBroker.SelectAllFeedbackAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        ValueTask<Feedback> IStorageBroker.SelectFeedbackByIdAsync(Guid feedbackId)
+        {
+            throw new NotImplementedException();
         }
     }
 }
