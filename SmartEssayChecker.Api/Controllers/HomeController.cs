@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿//=================================
+// Copyright (c) Tarteeb LLC
+// Check your essays esily
+//=================================
+
+using Microsoft.AspNetCore.Mvc;
 using RESTFulSense.Controllers;
 
 namespace SmartEssayChecker.Api.Controllers
