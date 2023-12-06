@@ -7,6 +7,12 @@ namespace SmartEssayChecker.Api.Services.Foundations.Feedbacks
 {
     public interface IFeedbackService
     {
+        /// <summary>
+        /// Save into database
+        /// </summary>
+        /// <param name="feedback"></param>
+        /// <returns></returns>
+        /// <exception cref="Models.Feedbacks.Exceptions.FeedbackValidationException"></exception> 
         ValueTask<Feedback> AddFeedbackAsync(Feedback feedback);
         IQueryable<Feedback> RetrieveFeedbacksAsync();
         ValueTask<Feedback> RetrieveFeedbackByIdAsync(Guid feedbackId);
