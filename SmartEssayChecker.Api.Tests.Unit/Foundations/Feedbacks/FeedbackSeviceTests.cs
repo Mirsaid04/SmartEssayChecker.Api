@@ -43,6 +43,12 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Feedbacks
         private static Feedback CreateRandomFeedback() =>
             CreateFeedbackFiller().Create();
 
+        private IQueryable<Feedback> CreateRandomFeedbacks()
+        {
+            return CreateFeedbackFiller()
+                .Create(count: GetRandomNumber()).AsQueryable();
+        }
+
         private static Filler<Feedback> CreateFeedbackFiller() =>
             new Filler<Feedback>();
     }
