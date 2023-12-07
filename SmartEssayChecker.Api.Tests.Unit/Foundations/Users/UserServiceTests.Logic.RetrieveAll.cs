@@ -3,7 +3,6 @@
 // Check your essays esily
 //=================================
 
-using System.Linq;
 using FluentAssertions;
 using Force.DeepCloner;
 using Moq;
