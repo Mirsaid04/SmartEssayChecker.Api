@@ -27,7 +27,8 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Users
                 .ReturnsAsync(expectedUser);
 
             // when
-            User actualUser = await this.userService.AddUserAsync(inputUser);
+            User actualUser = await this.userService
+                .AddUserAsync(inputUser);
 
 
             // then

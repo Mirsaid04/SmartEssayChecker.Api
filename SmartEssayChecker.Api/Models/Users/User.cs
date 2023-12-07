@@ -13,6 +13,6 @@ namespace SmartEssayChecker.Api.Models.Users
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Essay> Essays { get; set; }
+        public List<Essay> Essays { get; set; }
     }
 }
