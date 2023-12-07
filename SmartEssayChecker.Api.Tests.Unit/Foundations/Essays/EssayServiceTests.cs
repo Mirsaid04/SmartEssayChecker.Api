@@ -43,6 +43,12 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Essays
         private static Essay CreateRandomEssay() =>
             CreateEssayFiller().Create();
 
+        private IQueryable<Essay> CreateRandomEssays()
+        {
+            return CreateEssayFiller()
+                .Create(count: GetRandomNumber()).AsQueryable();
+        }
+
         private static Filler<Essay> CreateEssayFiller() =>
             new Filler<Essay>();
     }
