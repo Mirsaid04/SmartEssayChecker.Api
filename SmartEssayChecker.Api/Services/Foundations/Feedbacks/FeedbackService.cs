@@ -29,7 +29,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.Feedbacks
         });
 
         public IQueryable<Feedback> RetrieveFeedbacksAsync() =>
-            throw new NotImplementedException();
+            this.storageBroker.SelectAllFeedbacks();
 
         public ValueTask<Feedback> RetrieveFeedbackByIdAsync(Guid feedbackId) =>
         TryCatch(async () =>
