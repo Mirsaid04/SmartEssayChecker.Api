@@ -44,6 +44,12 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Users
         private static User CreateRandomUser() =>
             CreateUserFiller().Create();
 
+        private IQueryable<User> CreateRandomUsers()
+        {
+            return CreateUserFiller()
+                .Create(count: GetRandomNumber()).AsQueryable();
+        }
+
         private static Filler<User> CreateUserFiller() =>
             new Filler<User>();
     }

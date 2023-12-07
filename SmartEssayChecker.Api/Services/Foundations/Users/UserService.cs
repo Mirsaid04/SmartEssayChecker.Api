@@ -35,7 +35,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.Users
         });
 
         public IQueryable<User> RetrieveUsers() =>
-            this.storageBroker.SelectAllUsers();
+            throw new NotImplementedException();
 
         public async ValueTask<User> RetrieveUserByIdAsync(Guid userId)
         {
