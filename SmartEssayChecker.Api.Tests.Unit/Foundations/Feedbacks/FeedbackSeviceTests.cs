@@ -31,6 +31,12 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Feedbacks
                 loggingBroker: this.loggingBrokerMock.Object);
         }
 
+        private string GetRandomString() =>
+            new MnemonicString().GetValue();
+
+        private static int GetRandomNumber() =>
+            new IntRange(min: 2, max: 9).GetValue();
+
         private static Expression<Func<Xeption, bool>> SameExceptionAs(Xeption expectedException) =>
             actualException => actualException.SameExceptionAs(expectedException);
 

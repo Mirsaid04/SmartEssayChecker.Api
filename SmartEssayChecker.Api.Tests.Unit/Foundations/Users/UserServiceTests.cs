@@ -35,7 +35,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Users
             new MnemonicString().GetValue();
 
         private static int GetRandomNumber() =>
-            new IntRange(min:2 , max:9).GetValue();
+            new IntRange(min: 2, max: 9).GetValue();
 
         private static Expression<Func<Xeption, bool>> SameExceptionAs(Xeption expectedException) =>
             actualException => actualException.SameExceptionAs(expectedException);

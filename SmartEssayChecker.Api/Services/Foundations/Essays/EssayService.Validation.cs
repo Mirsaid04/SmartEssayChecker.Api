@@ -17,7 +17,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.Essays
 
             Validate(
                 (Rule: IsInvalid(essay.EssayId), Parameter: nameof(essay.EssayId)),
-                (Rule: IsInvalid(essay.EssayId), Parameter: nameof(essay.Content)));
+                (Rule: IsInvalid(essay.Content), Parameter: nameof(essay.Content)));
         }
 
         private void ValidateEssayId(Guid essayId)

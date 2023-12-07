@@ -4,8 +4,6 @@
 //=================================
 
 using System;
-using System.Data;
-using System.Reflection.Metadata;
 using SmartEssayChecker.Api.Models.Users;
 using SmartEssayChecker.Api.Models.Users.Exceptions;
 
@@ -58,13 +56,13 @@ namespace SmartEssayChecker.Api.Services.Foundations.Users
 
         private static void ValidateStorageUser(User maybeUser, Guid userId)
         {
-            if(maybeUser is null)
+            if (maybeUser is null)
             {
                 throw new NotFoundUserException(userId);
             }
         }
 
-        private static void ValidateAgainstStorageUserOnModify(User user , User storageUser)
+        private static void ValidateAgainstStorageUserOnModify(User user, User storageUser)
         {
             ValidateStorageUser(storageUser, user.Id);
 

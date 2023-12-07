@@ -63,6 +63,14 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Feedbacks
                 key: nameof(Feedback.Id),
                 values: "Id is required");
 
+            invalidFeedbackException.AddData(
+                key: nameof(Feedback.Comment),
+                values: "Comment is required");
+
+            invalidFeedbackException.AddData(
+                key: nameof(Feedback.Mark),
+                values: "Number is required");
+
             var expectedFeedbackValidationException =
                 new FeedbackValidationException(invalidFeedbackException);
 
