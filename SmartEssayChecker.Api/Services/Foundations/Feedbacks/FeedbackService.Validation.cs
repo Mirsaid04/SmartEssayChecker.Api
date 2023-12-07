@@ -36,7 +36,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.Feedbacks
         private static dynamic IsInvalid(float number) => new
         {
             Condition = number == default,
-            Message = "Mark is required"
+            Message = "Number is required"
         };
 
         private static void ValidateFeedbackNotNull(Feedback feedback)
