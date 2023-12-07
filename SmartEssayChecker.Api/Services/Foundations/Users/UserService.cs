@@ -50,6 +50,11 @@ namespace SmartEssayChecker.Api.Services.Foundations.Users
         {
             ValidateUserOnModify(user);
 
+            User maybeUser =
+                await this.storageBroker.SelectUserByIdAsync(user.Id);
+
+            ValidateAgainstStorageUserOnModify(user, maybeUser);
+
             return await this.storageBroker.UpdateUserAsync(user);
         }
 

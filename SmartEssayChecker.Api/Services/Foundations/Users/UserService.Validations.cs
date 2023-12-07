@@ -4,6 +4,8 @@
 //=================================
 
 using System;
+using System.Data;
+using System.Reflection.Metadata;
 using SmartEssayChecker.Api.Models.Users;
 using SmartEssayChecker.Api.Models.Users.Exceptions;
 
@@ -42,18 +44,34 @@ namespace SmartEssayChecker.Api.Services.Foundations.Users
 
         private static dynamic IsInvalid(string text) => new
         {
-            Condition = String.IsNullOrWhiteSpace(text) == default,
+            Condition = String.IsNullOrWhiteSpace(text),
             Message = "Text is required"
         };
 
         private static void ValidateUserNotNull(User user)
         {
-            if (user is null)
+            if (user == null)
             {
                 throw new NullUserException();
             }
         }
 
+        private static void ValidateStorageUser(User maybeUser, Guid userId)
+        {
+            if(maybeUser is null)
+            {
+                throw new NotFoundUserException(userId);
+            }
+        }
+
+        private static void ValidateAgainstStorageUserOnModify(User user , User storageUser)
+        {
+            ValidateStorageUser(storageUser, user.Id);
+
+            Validate(
+                (Rule: IsInvalid(user.Id), Parameter: nameof(user.Id)),
+                (Rule: IsInvalid(user.Name), Parameter: nameof(user.Name)));
+        }
         private static void Validate(params (dynamic Rule, string Parameter)[] validations)
         {
             var invalidUserException = new InvalidUserException();
