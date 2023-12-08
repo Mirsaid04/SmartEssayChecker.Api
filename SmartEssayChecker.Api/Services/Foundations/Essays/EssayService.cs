@@ -54,7 +54,10 @@ namespace SmartEssayChecker.Api.Services.Foundations.Essays
         {
             ValidateEssayId(essayId);
 
-           throw new NotImplementedException();
+            Essay essay = await this.storageBroker.SelectEssayByIdAsync(essayId);
+
+
+            return await this.storageBroker.DeleteEssayAsync(essay);
         }
     }
 }

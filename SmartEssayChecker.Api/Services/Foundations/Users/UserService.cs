@@ -62,7 +62,9 @@ namespace SmartEssayChecker.Api.Services.Foundations.Users
         {
             ValidateUserId(userId);
 
-            throw new NotImplementedException();
+            User user = await this.storageBroker.SelectUserByIdAsync(userId);
+
+            return await this.storageBroker.DeleteUserAsync(user);
         }
     }
 }

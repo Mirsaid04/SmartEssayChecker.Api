@@ -32,7 +32,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Users
             this.storageBrokerMock.Setup(broker =>
                 broker.DeleteUserAsync(expectedInputUser))
                 .ReturnsAsync(deleteUser);
-            
+
             //when
             User actualUser =
                 await this.userService.RemoveUserAsync(inputUserId);
@@ -45,6 +45,9 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Users
 
             this.storageBrokerMock.Verify(broker =>
                 broker.DeleteUserAsync(expectedInputUser), Times.Once());
+
+            this.storageBrokerMock.VerifyNoOtherCalls();
+            this.loggingBrokerMock.VerifyNoOtherCalls();
         }
     }
 }

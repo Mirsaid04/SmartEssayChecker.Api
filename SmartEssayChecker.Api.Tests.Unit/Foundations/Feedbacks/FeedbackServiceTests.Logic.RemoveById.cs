@@ -34,7 +34,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Feedbacks
                 .ReturnsAsync(deleteFeedback);
 
             //when
-            Feedback actualFeedback = await 
+            Feedback actualFeedback = await
                 this.feedbackService.RemoveFeedbackAsync(inputFeedbackId);
 
             //then
@@ -42,9 +42,12 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Feedbacks
 
             this.storageBrokerMock.Verify(broker =>
                 broker.SelectFeedbackByIdAsync(inputFeedbackId), Times.Once);
-            
+
             this.storageBrokerMock.Verify(broker =>
                 broker.DeleteFeedbackAsync(expectedInputFeedback), Times.Once);
+
+            this.storageBrokerMock.VerifyNoOtherCalls();
+            this.loggingBrokerMock.VerifyNoOtherCalls();
         }
     }
 }
