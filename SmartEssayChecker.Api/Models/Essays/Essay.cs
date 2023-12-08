@@ -14,7 +14,7 @@ namespace SmartEssayChecker.Api.Models.Essays
         public Guid EssayId { get; set; }
         public string Content { get; set; }
         public Guid UserId { get; set; }
-        public Feedback feedback { get; set; }
         public User User { get; set; }
+        public Feedback Feedback { get; set; }
     }
 }
