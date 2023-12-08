@@ -33,6 +33,9 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Essays
 
             this.storageBrokerMock.Verify(broker =>
                 broker.SelectAllEssays(), Times.Once());
+
+            this.storageBrokerMock.VerifyNoOtherCalls();
+            this.loggingBrokerMock.VerifyNoOtherCalls();
         }
     }
 }

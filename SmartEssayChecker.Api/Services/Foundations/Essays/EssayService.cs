@@ -37,7 +37,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.Essays
 
 
         public IQueryable<Essay> RetrieveAllEssays() =>
-            throw new NotImplementedException();
+            this.storageBroker.SelectAllEssays();
 
 
         public ValueTask<Essay> RetrieveEssayByIdAsync(Guid essayId) =>
