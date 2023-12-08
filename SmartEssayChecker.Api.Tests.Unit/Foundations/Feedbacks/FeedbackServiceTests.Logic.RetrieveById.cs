@@ -36,6 +36,9 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Feedbacks
 
             this.storageBrokerMock.Verify(broker =>
                 broker.SelectFeedbackByIdAsync(inputFeedbackId), Times.Once());
+
+            this.storageBrokerMock.VerifyNoOtherCalls();
+            this.loggingBrokerMock.VerifyNoOtherCalls();
         }
     }
 }
