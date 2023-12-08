@@ -15,5 +15,6 @@ namespace SmartEssayChecker.Api.Models.Feedbacks
         public string Comment { get; set; }
         public Guid EssayId { get; set; }
         public Essay Essay { get; set; }
+        public Guid ParentId { get; set; }
     }
 }
