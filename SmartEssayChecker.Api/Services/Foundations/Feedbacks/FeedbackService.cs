@@ -45,9 +45,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.Feedbacks
         {
             ValidateFeedbackId(feedbackId);
 
-            Feedback feedback = await this.storageBroker.SelectFeedbackByIdAsync(feedbackId);
-
-            return await this.storageBroker.DeleteFeedbackAsync(feedback);
+           throw new NotImplementedException();
         });
 
     }
