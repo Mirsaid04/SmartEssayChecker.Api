@@ -35,7 +35,10 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Essays
             actualEssay.Should().BeEquivalentTo(expectedEssay);
 
             this.storageBrokerMock.Verify(broker =>
-                broker.SelectUserByIdAsync(inputEssayId), Times.Once());
+                broker.SelectEssayByIdAsync(inputEssayId), Times.Once());
+
+            this.storageBrokerMock.VerifyNoOtherCalls();
+            this.loggingBrokerMock.VerifyNoOtherCalls();
         }
     }
 }
