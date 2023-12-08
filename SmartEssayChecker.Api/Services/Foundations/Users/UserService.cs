@@ -41,9 +41,8 @@ namespace SmartEssayChecker.Api.Services.Foundations.Users
         {
             ValidateUserId(userId);
 
-            User user = await this.storageBroker.SelectUserByIdAsync(userId);
-
-            return user;
+            // User user = await this.storageBroker.SelectUserByIdAsync(userId);
+            throw new NotImplementedException();
         }
 
         public async ValueTask<User> ModifyUserAsync(User user)
