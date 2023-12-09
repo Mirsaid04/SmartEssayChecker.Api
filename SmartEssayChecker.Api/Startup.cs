@@ -25,6 +25,7 @@ namespace SmartEssayChecker.Api
             services.AddControllers().AddOData(options =>
                     options.Select().Filter().OrderBy().Count().Expand());
 
+            services.AddDbContext<StorageBroker>();
             services.AddTransient<IStorageBroker, StorageBroker>();
             services.AddTransient<ILoggingBroker, LoggingBroker>();
 
