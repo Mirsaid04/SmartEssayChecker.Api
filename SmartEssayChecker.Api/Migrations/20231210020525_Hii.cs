@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SmartEssayChecker.Api.Migrations
 {
     /// <inheritdoc />
-    public partial class AddAllModelsTaable : Migration
+    public partial class Hii : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -29,16 +29,17 @@ namespace SmartEssayChecker.Api.Migrations
                 {
                     EssayId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserIdId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Essays", x => x.EssayId);
                     table.ForeignKey(
-                        name: "FK_Essays_Users_UserIdId",
-                        column: x => x.UserIdId,
+                        name: "FK_Essays_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -48,7 +49,8 @@ namespace SmartEssayChecker.Api.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Mark = table.Column<float>(type: "real", nullable: false),
                     Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EssayId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    EssayId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ParentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,18 +59,20 @@ namespace SmartEssayChecker.Api.Migrations
                         name: "FK_Feedbacks_Essays_EssayId",
                         column: x => x.EssayId,
                         principalTable: "Essays",
-                        principalColumn: "EssayId");
+                        principalColumn: "EssayId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Essays_UserIdId",
+                name: "IX_Essays_UserId",
                 table: "Essays",
-                column: "UserIdId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Feedbacks_EssayId",
                 table: "Feedbacks",
-                column: "EssayId");
+                column: "EssayId",
+                unique: true);
         }
 
         /// <inheritdoc />

@@ -12,8 +12,8 @@ using SmartEssayChecker.Api.Brokers.Storages;
 namespace SmartEssayChecker.Api.Migrations
 {
     [DbContext(typeof(StorageBroker))]
-    [Migration("20231203122707_AddAllModelsTaable")]
-    partial class AddAllModelsTaable
+    [Migration("20231210020525_Hii")]
+    partial class Hii
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,12 +34,12 @@ namespace SmartEssayChecker.Api.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("UserIdId")
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("EssayId");
 
-                    b.HasIndex("UserIdId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Essays");
                 });
@@ -53,15 +53,19 @@ namespace SmartEssayChecker.Api.Migrations
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("EssayId")
+                    b.Property<Guid>("EssayId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<float>("Mark")
                         .HasColumnType("real");
 
+                    b.Property<Guid>("ParentId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("EssayId");
+                    b.HasIndex("EssayId")
+                        .IsUnique();
 
                     b.ToTable("Feedbacks");
                 });
@@ -82,20 +86,34 @@ namespace SmartEssayChecker.Api.Migrations
 
             modelBuilder.Entity("SmartEssayChecker.Api.Models.Essays.Essay", b =>
                 {
-                    b.HasOne("SmartEssayChecker.Api.Models.Users.User", "UserId")
-                        .WithMany()
-                        .HasForeignKey("UserIdId");
+                    b.HasOne("SmartEssayChecker.Api.Models.Users.User", "User")
+                        .WithMany("Essays")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("UserId");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("SmartEssayChecker.Api.Models.Feedbacks.Feedback", b =>
                 {
                     b.HasOne("SmartEssayChecker.Api.Models.Essays.Essay", "Essay")
-                        .WithMany()
-                        .HasForeignKey("EssayId");
+                        .WithOne("Feedback")
+                        .HasForeignKey("SmartEssayChecker.Api.Models.Feedbacks.Feedback", "EssayId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Essay");
+                });
+
+            modelBuilder.Entity("SmartEssayChecker.Api.Models.Essays.Essay", b =>
+                {
+                    b.Navigation("Feedback");
+                });
+
+            modelBuilder.Entity("SmartEssayChecker.Api.Models.Users.User", b =>
+                {
+                    b.Navigation("Essays");
                 });
 #pragma warning restore 612, 618
         }
