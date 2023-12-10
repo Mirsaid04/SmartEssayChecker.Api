@@ -4,6 +4,7 @@
 //=================================
 
 using System;
+using System.Text.Json.Serialization;
 using SmartEssayChecker.Api.Models.Essays;
 
 namespace SmartEssayChecker.Api.Models.Feedbacks
@@ -14,7 +15,7 @@ namespace SmartEssayChecker.Api.Models.Feedbacks
         public float Mark { get; set; }
         public string Comment { get; set; }
         public Guid EssayId { get; set; }
+        [JsonIgnore]
         public Essay Essay { get; set; }
-        public Guid ParentId { get; set; }
     }
 }
