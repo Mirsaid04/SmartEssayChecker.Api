@@ -18,7 +18,7 @@ namespace SmartEssayChecker.Api.Brokers.Storages
         public StorageBroker(IConfiguration configuration)
         {
             this.configuration = configuration;
-            this.Database.EnsureCreated();
+            this.Database.Migrate();
         }
         private async ValueTask<T> InsertAsync<T>(T @object)
         {
