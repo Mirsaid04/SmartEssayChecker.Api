@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.OData;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SmartEssayChecker.Api.Brokers.Loggings;
+using SmartEssayChecker.Api.Brokers.OpenAis;
 using SmartEssayChecker.Api.Brokers.Storages;
 using SmartEssayChecker.Api.Services.Foundations.Essays;
 using SmartEssayChecker.Api.Services.Foundations.Feedbacks;
@@ -27,6 +27,7 @@ namespace SmartEssayChecker.Api
             services.AddDbContext<StorageBroker>();
             services.AddTransient<IStorageBroker, StorageBroker>();
             services.AddTransient<ILoggingBroker, LoggingBroker>();
+            services.AddTransient<IOpenAiBroker, OpenAiBroker>();
 
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IEssayService, EssayService>();
