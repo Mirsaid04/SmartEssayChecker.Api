@@ -3,9 +3,13 @@
 // Check your essays esily
 //=================================
 
+using System.Threading.Tasks;
+using Standard.AI.OpenAI.Models.Services.Foundations.ChatCompletions;
+
 namespace SmartEssayChecker.Api.Brokers.OpenAis
 {
-    internal partial interface IOpenAiBroker
-
-    { }
+    public partial interface IOpenAiBroker
+    {
+        ValueTask<ChatCompletion> AnalyzeEssayAsync(ChatCompletion chatCompletion);
+    }
 }
