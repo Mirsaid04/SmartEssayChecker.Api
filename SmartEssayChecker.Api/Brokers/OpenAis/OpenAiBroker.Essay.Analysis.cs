@@ -3,9 +3,7 @@
 // Check your essays esily
 //=================================
 
-using System;
 using System.Threading.Tasks;
-using Azure.Core;
 using Standard.AI.OpenAI.Models.Services.Foundations.ChatCompletions;
 
 namespace SmartEssayChecker.Api.Brokers.OpenAis
