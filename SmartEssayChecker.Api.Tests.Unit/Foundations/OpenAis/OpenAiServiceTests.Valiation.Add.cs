@@ -1,0 +1,49 @@
+﻿//=================================
+// Copyright (c) Tarteeb LLC
+// Check your essays esily
+//=================================
+
+using FluentAssertions;
+using Moq;
+using SmartEssayChecker.Api.Services.Foundations.OpenAis.Exceptions;
+using Xunit;
+
+namespace SmartEssayChecker.Api.Tests.Unit.Foundations.OpenAis
+{
+    public partial class OpenAiServiceTests
+    {
+        [Fact]
+        private async Task ShouldThrowValidationExceptionOnSendIfEssayChatCompletionIsNullASync()
+        {
+            //given
+            string openAiException = null;
+
+
+            var nullOpenAiException =
+                new NullOpenAiException();
+
+            var expectedEssayValidationException =
+                new OpenAiValidationException(nullOpenAiException);
+
+
+            //when
+
+            ValueTask<string> addEssayTask =
+                this.openAiService.AnalyzeEssayAsync(openAiException);
+
+            OpenAiValidationException actualOpenAiValidationException =
+                await Assert.ThrowsAsync<OpenAiValidationException>(addEssayTask.AsTask);
+
+            //then
+            actualOpenAiValidationException.Should()
+               .BeEquivalentTo(expectedEssayValidationException);
+
+            this.loggingBrokerMock.Verify(broker =>
+                broker.LogError(It.Is(SameExceptionAs(
+                    expectedEssayValidationException))), Times.Never);
+
+            this.openAiBrokerMock.VerifyNoOtherCalls();
+            this.loggingBrokerMock.VerifyNoOtherCalls();
+        }
+    }
+}
