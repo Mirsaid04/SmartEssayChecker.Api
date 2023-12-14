@@ -3,14 +3,13 @@
 // Check your essays esily
 //=================================
 
-using System;
 using Microsoft.Extensions.Configuration;
 using Standard.AI.OpenAI.Clients.OpenAIs;
 using Standard.AI.OpenAI.Models.Configurations;
 
 namespace SmartEssayChecker.Api.Brokers.OpenAis
 {
-    internal partial class OpenAiBroker : IOpenAiBroker
+    public partial class OpenAiBroker : IOpenAiBroker
     {
         private readonly OpenAIClient openAIClient;
         private readonly IConfiguration configuration;
@@ -21,9 +20,11 @@ namespace SmartEssayChecker.Api.Brokers.OpenAis
             this.configuration = configuration;
             this.openAIClient = ConfigureOpenAIClient();
         }
+
         private OpenAIClient ConfigureOpenAIClient()
         {
-            string apiKey = this.configuration.GetValue<String>(key: "OpenAiKey");
+            string apiKey = this.configuration.GetValue<string>(key: "OpenAiKey");
+
             var openAIConfiguration = new OpenAIConfigurations
             {
                 ApiKey = apiKey,

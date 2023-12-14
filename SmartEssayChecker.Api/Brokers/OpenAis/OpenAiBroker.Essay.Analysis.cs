@@ -8,7 +8,7 @@ using Standard.AI.OpenAI.Models.Services.Foundations.ChatCompletions;
 
 namespace SmartEssayChecker.Api.Brokers.OpenAis
 {
-    internal partial class OpenAiBroker
+    public partial class OpenAiBroker
     {
         public async ValueTask<ChatCompletion> AnalyzeEssayAsync(ChatCompletion chatCompletion)
         {
