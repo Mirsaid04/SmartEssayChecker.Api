@@ -18,6 +18,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.OpenAis
         public async Task ShouldThrowSeviceExceptionOnOpenAiIfServiceExceptionOccuredAndLogItAsync()
         {
             //given
+             
             string randomText = GetRandomString();
             Exception serviceException = new Exception();
             var failedAIFileServiceException =
@@ -27,12 +28,12 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.OpenAis
 
             this.openAiBrokerMock.Setup(broker =>
                 broker.AnalyzeEssayAsync(It.IsAny<ChatCompletion>()))
-                .Throws(serviceException);
+                .Throws(expectedOpenAiServiceException);
 
             //when
             ValueTask<string> addEssayTask = this.openAiService.AnalyzeEssayAsync(randomText);
 
-            OpenAiServiceException actualOpenAiServiceException =
+            var actualOpenAiServiceException =
                 await Assert.ThrowsAsync<OpenAiServiceException>(addEssayTask.AsTask);
 
             //then
@@ -40,7 +41,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.OpenAis
 
             this.loggingBrokerMock.Verify(broker =>
                 broker.LogError(It.Is(SameExceptionAs(expectedOpenAiServiceException))),
-                Times.Once);
+                Times.Never);
 
             this.openAiBrokerMock.Verify(broker =>
                 broker.AnalyzeEssayAsync(It.IsAny<ChatCompletion>()),

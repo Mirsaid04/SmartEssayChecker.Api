@@ -24,13 +24,17 @@ namespace SmartEssayChecker.Api.Services.Foundations.OpenAis
             this.loggingBroker = loggingBroker;
         }
 
-        public async ValueTask<string> AnalyzeEssayAsync(string essay)
+        public ValueTask<string> AnalyzeEssayAsync(string essay) =>
+            TryCatch(async () =>
         {
+            ValidateOpenAiOnAdd(essay);
+
             ChatCompletion request = CreateRequest(essay);
-            ChatCompletion response = await this.openAiBroker.AnalyzeEssayAsync(request);
+            ChatCompletion response =
+            await this.openAiBroker.AnalyzeEssayAsync(request);
 
             return response.Response.Choices.FirstOrDefault().Message.Content;
-        }
+        });
 
         public static ChatCompletion CreateRequest(string essay)
         {
