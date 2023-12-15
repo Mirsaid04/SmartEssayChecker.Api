@@ -29,7 +29,6 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.OpenAis
             //when
             string actualAnalysis = await this.openAiService.AnalyzeEssayAsync(inputEssay);
 
-
             //then
             actualAnalysis.Should().BeEquivalentTo(expectedAnalysis);
 

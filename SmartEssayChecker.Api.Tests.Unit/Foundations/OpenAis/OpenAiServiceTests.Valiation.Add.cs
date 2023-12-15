@@ -40,7 +40,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.OpenAis
 
             this.loggingBrokerMock.Verify(broker =>
                 broker.LogError(It.Is(SameExceptionAs(
-                    expectedEssayValidationException))), Times.Never);
+                    expectedEssayValidationException))), Times.Once);
 
             this.openAiBrokerMock.VerifyNoOtherCalls();
             this.loggingBrokerMock.VerifyNoOtherCalls();

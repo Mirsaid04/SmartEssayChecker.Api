@@ -31,7 +31,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.OpenAis
                 loggingBroker: this.loggingBrokerMock.Object);
         }
         private static string GetRandomString() =>
-           new MnemonicString().GetValue();
+           new MnemonicString(wordCount: GetRandomNumber()).GetValue();
 
         private static int GetRandomNumber() =>
             new IntRange(min: 2, max: 9).GetValue();
