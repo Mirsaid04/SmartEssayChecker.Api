@@ -9,7 +9,9 @@ using SmartEssayChecker.Api.Brokers.OpenAis;
 using SmartEssayChecker.Api.Brokers.Storages;
 using SmartEssayChecker.Api.Services.Foundations.Essays;
 using SmartEssayChecker.Api.Services.Foundations.Feedbacks;
+using SmartEssayChecker.Api.Services.Foundations.OpenAis;
 using SmartEssayChecker.Api.Services.Foundations.Users;
+using SmartEssayChecker.Api.Services.Orchestrations;
 
 namespace SmartEssayChecker.Api
 {
@@ -32,6 +34,8 @@ namespace SmartEssayChecker.Api
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IEssayService, EssayService>();
             services.AddTransient<IFeedbackService, FeedbackService>();
+            services.AddTransient<IEssayAnalysisOrchestrationService, EssayAnalysisOrchestrationService>();
+            services.AddTransient<IOpenAiService, OpenAiService>();
 
             services.AddCors(option =>
             {
