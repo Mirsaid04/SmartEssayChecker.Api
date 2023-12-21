@@ -15,10 +15,10 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.OpenAis
     public partial class OpenAiServiceTests
     {
         [Fact]
-        public async Task ShouldThrowSeviceExceptionOnOpenAiIfServiceExceptionOccuredAndLogItAsync()
+        public async Task ShouldThrowServiceExceptionOnOpenAiIfServiceExceptionOccurredAndLogItAsync()
         {
             //given
-             
+
             string randomText = GetRandomString();
             Exception serviceException = new Exception();
             var failedAIFileServiceException =
