@@ -362,3 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /SmartEssayChecker.Api/appsettings.Development.json
+/SmartEssayChecker.Api/Migrations/20231210020525_Hii.Designer.cs
