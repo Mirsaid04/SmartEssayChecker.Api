@@ -18,23 +18,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.OpenAis
             {
                 throw CreateAndLogValidationException(nullOpenAiException);
             }
-            /* catch(Exception exception)
-             {
-                 var failedOpenAiServiceException =
-                     new FailedOpenAiServiceException(exception);
-             }*/
         }
-
-        /*  private Exception CreateAndLogServiceException(Xeption exception)
-          {
-              var openAiServiceException =
-                  new OpenAiServiceException(exception);
-
-              this.loggingBroker.LogError(openAiServiceException);
-
-              return openAiServiceException;
-          }*/
-
         private OpenAiValidationException CreateAndLogValidationException(Exception exceptionn)
         {
             var openAiValidationException =

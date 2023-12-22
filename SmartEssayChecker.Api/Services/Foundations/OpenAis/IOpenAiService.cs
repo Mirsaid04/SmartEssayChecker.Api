@@ -9,6 +9,6 @@ namespace SmartEssayChecker.Api.Services.Foundations.OpenAis
 {
     public interface IOpenAiService
     {
-        ValueTask<string> AnalyzeEssayAsync(string essay);
+        public ValueTask<string> AnalyzeEssayAsync(string essay);
     }
 }

@@ -15,7 +15,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.OpenAis
         }
         private static void ValidateOpanAiIsNotNull(string essay)
         {
-            if (essay == null)
+            if (string.IsNullOrWhiteSpace(essay))
             {
                 throw new NullOpenAiException();
             }
