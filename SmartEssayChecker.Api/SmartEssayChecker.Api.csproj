@@ -2,12 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
+    <AnalysisLevel>preview</AnalysisLevel>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="EFxceptions" Version="0.4.5" />
     <PackageReference Include="LightInject.Web" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.OData" Version="8.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel.Core" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="1.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.12" />
@@ -20,6 +24,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="Tynamix.ObjectFiller" Version="1.5.8" />
     <PackageReference Include="Tynamix.ObjectFiller.RegEx" Version="1.0.0" />
+	   <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="3.1.20" />	  
   </ItemGroup>
 
 </Project>

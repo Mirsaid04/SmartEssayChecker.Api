@@ -1,4 +1,9 @@
-﻿using System;
+﻿//=================================
+// Copyright (c) Tarteeb LLC
+// Check your essays easily
+//=================================
+
+using System;
 using System.Threading.Tasks;
 using SmartEssayChecker.Api.Services.Foundations.OpenAis.Exceptions;
 

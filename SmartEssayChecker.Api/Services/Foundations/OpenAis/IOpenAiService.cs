@@ -1,6 +1,6 @@
 ﻿//=================================
 // Copyright (c) Tarteeb LLC
-// Check your essays esily
+// Check your essays easily
 //=================================
 
 using System.Threading.Tasks;
