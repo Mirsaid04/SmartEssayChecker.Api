@@ -1,6 +1,6 @@
 ﻿//=================================
 // Copyright (c) Tarteeb LLC
-// Check your essays esily
+// Check your essays easily
 //=================================
 
 using System.Linq;
@@ -42,22 +42,25 @@ namespace SmartEssayChecker.Api.Services.Foundations.OpenAis
             {
                 Request = new ChatCompletionRequest
                 {
-                    Model = "gpt-3.5-turbo",
+                    Model = "gpt-4-1106-preview",
+                    MaxTokens = 1500,
                     Messages = new ChatCompletionMessage[]
                     {
                         new ChatCompletionMessage
                         {
-                            Content = "You are IELTS Writing examiner. Give detailed IELTS score based on marking criteria of IELTS",
-                            Role = "System",
+                            Content = "You are IELTS Writing examiner. Give detailed IELTS feedback based on marking criteria of IELTS",
+                            Role = "system",
                         },
                         new ChatCompletionMessage
                         {
                             Content = essay,
-                            Role = "User",
+                            Role = "user",
                         }
                     },
+
                 }
             };
         }
+
     }
 }

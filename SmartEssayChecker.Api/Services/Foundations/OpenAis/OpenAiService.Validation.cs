@@ -1,6 +1,6 @@
 ﻿//=================================
 // Copyright (c) Tarteeb LLC
-// Check your essays esily
+// Check your essays easily
 //=================================
 
 using SmartEssayChecker.Api.Services.Foundations.OpenAis.Exceptions;
@@ -15,7 +15,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.OpenAis
         }
         private static void ValidateOpanAiIsNotNull(string essay)
         {
-            if (essay == null)
+            if (string.IsNullOrWhiteSpace(essay))
             {
                 throw new NullOpenAiException();
             }

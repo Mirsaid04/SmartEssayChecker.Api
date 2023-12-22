@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SmartEssayChecker.Api.Migrations
 {
     /// <inheritdoc />
-    public partial class Hii : Migration
+    public partial class NewTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -49,8 +49,7 @@ namespace SmartEssayChecker.Api.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Mark = table.Column<float>(type: "real", nullable: false),
                     Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EssayId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ParentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    EssayId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -71,8 +70,7 @@ namespace SmartEssayChecker.Api.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Feedbacks_EssayId",
                 table: "Feedbacks",
-                column: "EssayId",
-                unique: true);
+                column: "EssayId");
         }
 
         /// <inheritdoc />

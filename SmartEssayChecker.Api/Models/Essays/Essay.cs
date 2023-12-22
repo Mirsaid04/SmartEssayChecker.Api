@@ -4,6 +4,7 @@
 //=================================
 
 using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using SmartEssayChecker.Api.Models.Feedbacks;
 using SmartEssayChecker.Api.Models.Users;
@@ -18,6 +19,6 @@ namespace SmartEssayChecker.Api.Models.Essays
         [JsonIgnore]
         public User User { get; set; }
         [JsonIgnore]
-        public Feedback Feedback { get; set; }
+        public List<Feedback> Feedbacks { get; set; } = new List<Feedback>();
     }
 }

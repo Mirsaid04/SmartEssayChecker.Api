@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -36,6 +37,11 @@ namespace SmartEssayChecker.Api
             services.AddTransient<IFeedbackService, FeedbackService>();
             services.AddTransient<IEssayAnalysisOrchestrationService, EssayAnalysisOrchestrationService>();
             services.AddTransient<IOpenAiService, OpenAiService>();
+
+            services.Configure<KestrelServerOptions>(options =>
+            {
+                options.Limits.MaxRequestLineSize = 8192; // For request line length
+            });
 
             services.AddCors(option =>
             {

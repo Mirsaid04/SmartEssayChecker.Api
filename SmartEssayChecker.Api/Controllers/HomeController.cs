@@ -1,13 +1,20 @@
 ﻿//=================================
 // Copyright (c) Tarteeb LLC
-// Check your essays esily
+// Check your essays easily
 //=================================
 
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using RESTFulSense.Controllers;
 using SmartEssayChecker.Api.Brokers.OpenAis;
-using Standard.AI.OpenAI.Models.Services.Foundations.ChatCompletions;
+using SmartEssayChecker.Api.Models.EssayAnalayses;
+using SmartEssayChecker.Api.Models.Essays;
+using SmartEssayChecker.Api.Models.Users.Exceptions;
+using SmartEssayChecker.Api.Services.Foundations.Essays;
+using SmartEssayChecker.Api.Services.Foundations.Users;
+using SmartEssayChecker.Api.Services.Orchestrations;
 
 namespace SmartEssayChecker.Api.Controllers
 {
@@ -15,11 +22,20 @@ namespace SmartEssayChecker.Api.Controllers
     [ApiController]
     public class HomeController : RESTFulController
     {
-        private readonly IOpenAiBroker openAiBroker;
+        private readonly IEssayAnalysisOrchestrationService orchestrationService;
+        private readonly IEssayService essayService;
+        private readonly IOpenAiBroker broker;
+        private readonly IUserService userService;
 
-        public HomeController(IOpenAiBroker openAiBroker)
+        public HomeController(IEssayAnalysisOrchestrationService orchestrationService,
+            IEssayService essayService,
+            IOpenAiBroker broker,
+            IUserService userService)
         {
-            this.openAiBroker = openAiBroker;
+            this.orchestrationService = orchestrationService;
+            this.essayService = essayService;
+            this.broker = broker;
+            this.userService = userService;
         }
 
         [HttpGet]
@@ -27,9 +43,26 @@ namespace SmartEssayChecker.Api.Controllers
             Ok("Hello Mario, the princess is in another castle.");
 
         [HttpPost]
-        public async ValueTask<ActionResult<ChatCompletion>> Post(ChatCompletion chatCompletion)
+
+        public async Task<ActionResult<EssayAnalysis>> Post(string userName, string essay)
         {
-            return await this.openAiBroker.AnalyzeEssayAsync(chatCompletion);
+            var user = this.userService.RetrieveUsers().FirstOrDefault(user => user.Name == userName);
+
+            if (user == null)
+            {
+                throw new NotFoundUserByNameException(userName);
+            }
+            var essayAnalysis = await this.orchestrationService.AnalyzeEssay(new EssayAnalysis
+            {
+                Essay = new Essay
+                {
+                    Content = essay,
+                    EssayId = Guid.NewGuid(),
+                    UserId = user.Id
+                },
+            }, userName);
+
+            return Ok(essayAnalysis);
         }
     }
 }
