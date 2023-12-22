@@ -1,8 +1,7 @@
 ﻿//=================================
 // Copyright (c) Tarteeb LLC
-// Check your essays easily
+// Check your essays esily
 //=================================
-
 
 using System;
 using System.Linq;

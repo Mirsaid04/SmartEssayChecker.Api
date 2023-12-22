@@ -1,6 +1,6 @@
 ﻿//=================================
 // Copyright (c) Tarteeb LLC
-// Check your essays easily
+// Check your essays esily
 //=================================
 
 using System;
@@ -29,7 +29,6 @@ namespace SmartEssayChecker.Api.Controllers
         {
             try
             {
-                user.Id = Guid.NewGuid();
                 User persistedUser = await this.userService.AddUserAsync(user);
 
                 return Created(persistedUser);
