@@ -15,6 +15,6 @@ namespace SmartEssayChecker.Api.Models.Users
         public Guid Id { get; set; }
         public string Name { get; set; }
         [JsonIgnore]
-        public List<Essay> Essays { get; set; }
+        public virtual ICollection<Essay>? Essays { get; set; }
     }
 }

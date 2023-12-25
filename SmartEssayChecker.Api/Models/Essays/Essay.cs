@@ -17,8 +17,8 @@ namespace SmartEssayChecker.Api.Models.Essays
         public string Content { get; set; }
         public Guid UserId { get; set; }
         [JsonIgnore]
-        public User User { get; set; }
+        public User? User { get; set; }
         [JsonIgnore]
-        public List<Feedback> Feedbacks { get; set; } = new List<Feedback>();
+        public Feedback? Feedback { get; set; }
     }
 }

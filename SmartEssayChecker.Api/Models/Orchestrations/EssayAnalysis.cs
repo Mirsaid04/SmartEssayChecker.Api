@@ -10,7 +10,7 @@ namespace SmartEssayChecker.Api.Models.EssayAnalayses
 {
     public class EssayAnalysis
     {
-        public Essay Essay { get; set; }
-        public Feedback Feedback { get; set; }
+        public Essay? Essay { get; set; }
+        public Feedback? Feedback { get; set; }
     }
 }
