@@ -18,6 +18,6 @@ namespace SmartEssayChecker.Api.Models.Feedbacks
         [ForeignKey("EssayId")]
         public Guid EssayId { get; set; }
         [JsonIgnore]
-        public Essay Essay { get; set; }
+        public Essay? Essay { get; set; }
     }
 }
