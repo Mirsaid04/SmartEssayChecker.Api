@@ -4,7 +4,6 @@
 //=================================
 
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using SmartEssayChecker.Api.Models.Essays;
 
@@ -13,11 +12,12 @@ namespace SmartEssayChecker.Api.Models.Feedbacks
     public class Feedback
     {
         public Guid Id { get; set; }
+        [JsonIgnore]
         public float Mark { get; set; }
         public string Comment { get; set; }
-        [ForeignKey("EssayId")]
+        [JsonIgnore]
         public Guid EssayId { get; set; }
         [JsonIgnore]
-        public Essay? Essay { get; set; }
+        public virtual Essay? Essay { get; set; }
     }
 }

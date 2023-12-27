@@ -1,10 +1,12 @@
 ﻿//=================================
 // Copyright (c) Tarteeb LLC
-// Check your essays esily
+// Check your essays easily
 //=================================
 
 using FluentAssertions;
 using Moq;
+using SmartEssayChecker.Api.Models.Essays;
+using SmartEssayChecker.Api.Models.Feedbacks;
 using Standard.AI.OpenAI.Models.Services.Foundations.ChatCompletions;
 using Xunit;
 
@@ -17,7 +19,12 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.OpenAis
         {
             //given
             string randomText = GetRandomString();
-            string inputEssay = randomText;
+            var inputEssay = new Essay
+            {
+                EssayId = Guid.NewGuid(),
+                Content = randomText,
+                UserId = Guid.NewGuid(),
+            };
             string anotherRandomText = GetRandomString();
             string expectedAnalysis = anotherRandomText;
             ChatCompletion analyzedChatCompletion = CreateOutputChatCompletion(expectedAnalysis);
@@ -27,10 +34,10 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.OpenAis
                 .ReturnsAsync(analyzedChatCompletion);
 
             //when
-            string actualAnalysis = await this.openAiService.AnalyzeEssayAsync(inputEssay);
+            Feedback actualAnalysis = await this.openAiService.AnalyzeEssayAsync(inputEssay);
 
             //then
-            actualAnalysis.Should().BeEquivalentTo(expectedAnalysis);
+            actualAnalysis.Comment.Should().BeEquivalentTo(expectedAnalysis);
 
             this.openAiBrokerMock.Verify(broker =>
                 broker.AnalyzeEssayAsync(It.IsAny<ChatCompletion>()),

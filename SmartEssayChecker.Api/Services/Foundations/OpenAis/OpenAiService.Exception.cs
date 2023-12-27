@@ -13,7 +13,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.OpenAis
     {
         private delegate ValueTask<string> ReturnOpenAiAsync();
 
-        private async ValueTask<string> TryCatch(ReturnOpenAiAsync returnOpenAiAsync)
+        private async ValueTask<T> TryCatch<T>(Func<ValueTask<T>> returnOpenAiAsync)
         {
             try
             {

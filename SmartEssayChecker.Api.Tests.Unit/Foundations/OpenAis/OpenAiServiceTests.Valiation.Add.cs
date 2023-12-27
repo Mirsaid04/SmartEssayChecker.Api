@@ -1,10 +1,12 @@
 ﻿//=================================
 // Copyright (c) Tarteeb LLC
-// Check your essays esily
+// Check your essays easily
 //=================================
 
 using FluentAssertions;
 using Moq;
+using SmartEssayChecker.Api.Models.Essays;
+using SmartEssayChecker.Api.Models.Feedbacks;
 using SmartEssayChecker.Api.Services.Foundations.OpenAis.Exceptions;
 using Xunit;
 
@@ -16,7 +18,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.OpenAis
         private async Task ShouldThrowValidationExceptionOnSendIfEssayChatCompletionIsNullASync()
         {
             //given
-            string openAiException = null;
+            Essay openAiException = null;
 
 
             var nullOpenAiException =
@@ -28,7 +30,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.OpenAis
 
             //when
 
-            ValueTask<string> addEssayTask =
+            ValueTask<Feedback> addEssayTask =
                 this.openAiService.AnalyzeEssayAsync(openAiException);
 
             OpenAiValidationException actualOpenAiValidationException =

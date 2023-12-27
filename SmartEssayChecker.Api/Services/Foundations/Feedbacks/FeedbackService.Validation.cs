@@ -12,8 +12,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.Feedbacks
 
             Validate(
                 (Rule: IsInvalid(feedback.Id), Parameter: nameof(feedback.Id)),
-                (Rule: IsInvalid(feedback.Comment), Parameter: nameof(feedback.Comment)),
-                (Rule: IsInvalid(feedback.Mark), Parameter: nameof(feedback.Mark)));
+                (Rule: IsInvalid(feedback.Comment), Parameter: nameof(feedback.Comment)));
         }
 
         private void ValidateFeedbackId(Guid feedbackId)
