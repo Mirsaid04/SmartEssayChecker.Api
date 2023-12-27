@@ -1,10 +1,12 @@
 ﻿//=================================
 // Copyright (c) Tarteeb LLC
-// Check your essays esily
+// Check your essays easily
 //=================================
 
 using FluentAssertions;
 using Moq;
+using SmartEssayChecker.Api.Models.Essays;
+using SmartEssayChecker.Api.Models.Feedbacks;
 using SmartEssayChecker.Api.Services.Foundations.OpenAis.Exceptions;
 using Standard.AI.OpenAI.Models.Services.Foundations.AIFiles.Exceptions;
 using Standard.AI.OpenAI.Models.Services.Foundations.ChatCompletions;
@@ -20,6 +22,12 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.OpenAis
             //given
 
             string randomText = GetRandomString();
+            var essay = new Essay
+            {
+                EssayId = Guid.NewGuid(),
+                Content = randomText,
+                UserId = Guid.NewGuid(),
+            };
             Exception serviceException = new Exception();
             var failedAIFileServiceException =
                 new FailedAIFileServiceException(serviceException);
@@ -31,7 +39,7 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.OpenAis
                 .Throws(expectedOpenAiServiceException);
 
             //when
-            ValueTask<string> addEssayTask = this.openAiService.AnalyzeEssayAsync(randomText);
+            ValueTask<Feedback> addEssayTask = this.openAiService.AnalyzeEssayAsync(essay);
 
             var actualOpenAiServiceException =
                 await Assert.ThrowsAsync<OpenAiServiceException>(addEssayTask.AsTask);
