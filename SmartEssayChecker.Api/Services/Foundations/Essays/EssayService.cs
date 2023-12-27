@@ -30,6 +30,8 @@ namespace SmartEssayChecker.Api.Services.Foundations.Essays
         public ValueTask<Essay> AddEssayAsync(Essay essay) =>
         TryCatch(async () =>
         {
+            essay.EssayId = Guid.NewGuid();
+            essay.UserId = new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa5");
             ValidationOnAdd(essay);
 
             return await this.storageBroker.InsertEssayAsync(essay);

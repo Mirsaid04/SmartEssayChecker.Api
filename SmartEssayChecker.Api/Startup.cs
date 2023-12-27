@@ -11,6 +11,7 @@ using SmartEssayChecker.Api.Brokers.Storages;
 using SmartEssayChecker.Api.Services.Foundations.Essays;
 using SmartEssayChecker.Api.Services.Foundations.Feedbacks;
 using SmartEssayChecker.Api.Services.Foundations.OpenAis;
+using SmartEssayChecker.Api.Services.Foundations.TextInputFormatter;
 using SmartEssayChecker.Api.Services.Foundations.Users;
 using SmartEssayChecker.Api.Services.Orchestrations;
 
@@ -25,7 +26,12 @@ namespace SmartEssayChecker.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers(options =>
+            {
+                options.InputFormatters.Add(new TextInput());
+            });
             services.AddControllers();
+            services.AddEndpointsApiExplorer();
 
             services.AddDbContext<StorageBroker>();
             services.AddTransient<IStorageBroker, StorageBroker>();

@@ -4,7 +4,6 @@
 //=================================
 
 using System;
-using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using SmartEssayChecker.Api.Models.Feedbacks;
 using SmartEssayChecker.Api.Models.Users;
@@ -13,12 +12,14 @@ namespace SmartEssayChecker.Api.Models.Essays
 {
     public class Essay
     {
+        [JsonIgnore]
         public Guid EssayId { get; set; }
         public string Content { get; set; }
+        [JsonIgnore]
         public Guid UserId { get; set; }
         [JsonIgnore]
-        public User? User { get; set; }
+        public virtual User? User { get; set; }
         [JsonIgnore]
-        public Feedback? Feedback { get; set; }
+        public virtual Feedback? Feedback { get; set; }
     }
 }

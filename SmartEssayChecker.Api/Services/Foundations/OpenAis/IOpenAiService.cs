@@ -4,11 +4,13 @@
 //=================================
 
 using System.Threading.Tasks;
+using SmartEssayChecker.Api.Models.Essays;
+using SmartEssayChecker.Api.Models.Feedbacks;
 
 namespace SmartEssayChecker.Api.Services.Foundations.OpenAis
 {
     public interface IOpenAiService
     {
-        public ValueTask<string> AnalyzeEssayAsync(string essay);
+        public ValueTask<Feedback> AnalyzeEssayAsync(Essay essay);
     }
 }
