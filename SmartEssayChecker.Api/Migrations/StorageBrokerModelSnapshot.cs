@@ -58,7 +58,8 @@ namespace SmartEssayChecker.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EssayId");
+                    b.HasIndex("EssayId")
+                        .IsUnique();
 
                     b.ToTable("Feedbacks");
                 });
@@ -91,8 +92,8 @@ namespace SmartEssayChecker.Api.Migrations
             modelBuilder.Entity("SmartEssayChecker.Api.Models.Feedbacks.Feedback", b =>
                 {
                     b.HasOne("SmartEssayChecker.Api.Models.Essays.Essay", "Essay")
-                        .WithMany("Feedbacks")
-                        .HasForeignKey("EssayId")
+                        .WithOne("Feedback")
+                        .HasForeignKey("SmartEssayChecker.Api.Models.Feedbacks.Feedback", "EssayId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -101,7 +102,7 @@ namespace SmartEssayChecker.Api.Migrations
 
             modelBuilder.Entity("SmartEssayChecker.Api.Models.Essays.Essay", b =>
                 {
-                    b.Navigation("Feedbacks");
+                    b.Navigation("Feedback");
                 });
 
             modelBuilder.Entity("SmartEssayChecker.Api.Models.Users.User", b =>

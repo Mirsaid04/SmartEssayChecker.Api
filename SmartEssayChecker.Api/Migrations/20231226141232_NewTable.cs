@@ -70,7 +70,8 @@ namespace SmartEssayChecker.Api.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Feedbacks_EssayId",
                 table: "Feedbacks",
-                column: "EssayId");
+                column: "EssayId",
+                unique: true);
         }
 
         /// <inheritdoc />
