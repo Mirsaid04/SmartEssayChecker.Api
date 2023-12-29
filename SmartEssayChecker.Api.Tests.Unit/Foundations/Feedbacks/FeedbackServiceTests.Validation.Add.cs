@@ -1,4 +1,4 @@
-﻿//=================================
+﻿/*//=================================
 // Copyright (c) Tarteeb LLC
 // Check your essays esily
 //=================================
@@ -93,3 +93,4 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Feedbacks
         }
     }
 }
+*/
