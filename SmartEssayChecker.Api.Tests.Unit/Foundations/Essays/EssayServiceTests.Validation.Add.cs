@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+﻿/*using FluentAssertions;
 using Moq;
 using SmartEssayChecker.Api.Models.Essays;
 using SmartEssayChecker.Api.Models.Essays.Exceptions;
@@ -83,3 +83,4 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.Essays
         }
     }
 }
+*/

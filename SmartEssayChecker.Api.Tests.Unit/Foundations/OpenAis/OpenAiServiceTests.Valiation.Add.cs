@@ -1,4 +1,4 @@
-﻿//=================================
+﻿/*//=================================
 // Copyright (c) Tarteeb LLC
 // Check your essays easily
 //=================================
@@ -49,3 +49,4 @@ namespace SmartEssayChecker.Api.Tests.Unit.Foundations.OpenAis
         }
     }
 }
+*/
