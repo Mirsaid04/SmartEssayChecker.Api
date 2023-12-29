@@ -30,14 +30,11 @@ namespace SmartEssayChecker.Api.Services.Orchestrations
             this.feedbackService = feedbackService;
             this.loggingBroker = loggingBroker;
         }
-        public async ValueTask<EssayAnalysis> AnalyzeEssay(EssayAnalysis essayAnalysis)
+        public async ValueTask<string> AnalyzeEssay(EssayAnalysis essayAnalysis)
         {
-            essayAnalysis.Feedback = await this.openAiService.AnalyzeEssayAsync(essayAnalysis.Essay);
+           string essay  = await this.openAiService.AnalyzeEssayAsync(essayAnalysis.Essay);
 
-            await this.essayService.AddEssayAsync(essayAnalysis.Essay);
-            await this.feedbackService.AddFeedbackAsync(essayAnalysis.Feedback);
-
-            return essayAnalysis;
+            return essay;
         }
     }
 }
