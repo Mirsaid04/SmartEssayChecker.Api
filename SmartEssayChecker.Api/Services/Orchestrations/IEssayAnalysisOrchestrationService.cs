@@ -10,6 +10,6 @@ namespace SmartEssayChecker.Api.Services.Orchestrations
 {
     public interface IEssayAnalysisOrchestrationService
     {
-        ValueTask<EssayAnalysis> AnalyzeEssay(EssayAnalysis essayAnalysis);
+        ValueTask<string> AnalyzeEssay(EssayAnalysis essayAnalysis);
     }
 }

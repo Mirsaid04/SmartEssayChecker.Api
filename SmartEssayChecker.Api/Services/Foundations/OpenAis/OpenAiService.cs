@@ -27,7 +27,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.OpenAis
             this.loggingBroker = loggingBroker;
         }
 
-        public ValueTask<Feedback> AnalyzeEssayAsync(Essay essay) =>
+        public ValueTask<string> AnalyzeEssayAsync(Essay essay) =>
             TryCatch(async () =>
         {
             ValidateOpenAiOnAdd(essay);
@@ -48,7 +48,7 @@ namespace SmartEssayChecker.Api.Services.Foundations.OpenAis
                 Comment = comment
             };
 
-            return feedback;
+            return comment;
 
         });
 
