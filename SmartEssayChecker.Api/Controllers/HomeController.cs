@@ -22,20 +22,16 @@ namespace SmartEssayChecker.Api.Controllers
             this.orchestrationService = orchestrationService;
         }
 
-        [HttpGet]
-        public ActionResult<string> Get() =>
-            Ok("Hello Mario, the princess is in another castle.");
-
         [HttpPost]
         [Consumes("text/plain")]
-        public async Task<ActionResult<EssayAnalysis>> Post([FromBody] string essay)
+        public async Task<ActionResult<string>> Post([FromBody] string essay)
         {
             var essayAnalyse = new EssayAnalysis();
             essayAnalyse.Essay.Content = essay;
 
-            await orchestrationService.AnalyzeEssay(essayAnalyse);
+           var expectedEssayAnalyse = await orchestrationService.AnalyzeEssay(essayAnalyse);
 
-            return Ok(essayAnalyse);
+            return Ok(expectedEssayAnalyse.Feedback.Comment);
         }
     }
 }
