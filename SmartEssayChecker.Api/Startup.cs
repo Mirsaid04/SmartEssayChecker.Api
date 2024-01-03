@@ -81,6 +81,7 @@ namespace SmartEssayChecker.Api
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SmartEssayChecker.Api v1"));
             }
 
+            app.UseCors("MyPolicy");
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
