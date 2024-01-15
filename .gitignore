@@ -364,3 +364,5 @@ FodyWeavers.xsd
 /SmartEssayChecker.Api/appsettings.Development.json
 /SmartEssayChecker.Api/Migrations/20231210020525_Hii.Designer.cs
 /SmartEssayChecker.Api/appsettings.json
+/SmartEssayChecker.Api/Brokers/OpenAis/OpenAiBroker.cs
+/.gitignore
