@@ -32,7 +32,7 @@ namespace SmartEssayChecker.Api.Services.Orchestrations
         }
         public async ValueTask<string> AnalyzeEssay(EssayAnalysis essayAnalysis)
         {
-           string essay  = await this.openAiService.AnalyzeEssayAsync(essayAnalysis.Essay);
+            string essay = await this.openAiService.AnalyzeEssayAsync(essayAnalysis.Essay);
 
             return essay;
         }
