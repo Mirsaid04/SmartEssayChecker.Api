@@ -5,7 +5,6 @@
 
 using System.Threading.Tasks;
 using SmartEssayChecker.Api.Models.Essays;
-using SmartEssayChecker.Api.Models.Feedbacks;
 
 namespace SmartEssayChecker.Api.Services.Foundations.OpenAis
 {

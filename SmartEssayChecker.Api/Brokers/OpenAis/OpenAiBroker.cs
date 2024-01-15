@@ -28,7 +28,6 @@ namespace SmartEssayChecker.Api.Brokers.OpenAis
             {
                 ApiKey = apiKey,
             };
-
             return new OpenAIClient(openAIConfiguration);
         }
     }
