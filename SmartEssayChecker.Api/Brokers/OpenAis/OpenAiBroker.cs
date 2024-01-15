@@ -25,6 +25,7 @@ namespace SmartEssayChecker.Api.Brokers.OpenAis
         {
             string apiKey = "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";
 
+
             var openAIConfiguration = new OpenAIConfigurations
             {
                 ApiKey = apiKey,
