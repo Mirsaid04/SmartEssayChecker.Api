@@ -20,7 +20,6 @@ namespace SmartEssayChecker.Api.Brokers.OpenAis
             this.configuration = configuration;
             this.openAIClient = ConfigureOpenAIClient();
         }
-
         private OpenAIClient ConfigureOpenAIClient()
         {
             string apiKey = this.configuration["ApiKey"];
