@@ -7,7 +7,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using EFxceptions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace SmartEssayChecker.Api.Brokers.Storages
 {

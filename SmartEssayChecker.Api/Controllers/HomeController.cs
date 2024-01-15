@@ -29,7 +29,7 @@ namespace SmartEssayChecker.Api.Controllers
             var essayAnalyse = new EssayAnalysis();
             essayAnalyse.Essay.Content = essay;
 
-           var feedback = await orchestrationService.AnalyzeEssay(essayAnalyse);
+            var feedback = await orchestrationService.AnalyzeEssay(essayAnalyse);
 
             return Ok(feedback);
         }
