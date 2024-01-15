@@ -71,7 +71,6 @@ namespace SmartEssayChecker.Api
             });
 
         }
-
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment()||env.IsProduction())
