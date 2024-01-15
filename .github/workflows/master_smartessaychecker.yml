@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'SmartEssayChecker'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6BC4CB07F2FE46EAB80F28967B69743D }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8F8B35D5D2824B44BAD994382BF10574 }}
           package: .
