@@ -3,6 +3,7 @@
 // Check your essays esily
 //=================================
 
+using System;
 using Microsoft.Extensions.Configuration;
 using Standard.AI.OpenAI.Clients.OpenAIs;
 using Standard.AI.OpenAI.Models.Configurations;
@@ -22,13 +23,22 @@ namespace SmartEssayChecker.Api.Brokers.OpenAis
         }
         private OpenAIClient ConfigureOpenAIClient()
         {
+            try
+            {
             string apiKey = configuration["AppSettings:ApiKey"];
+            Console.WriteLine($"API Key retrieved: {apiKey}");
 
-            var openAIConfiguration = new OpenAIConfigurations
+                var openAIConfiguration = new OpenAIConfigurations
             {
                 ApiKey = apiKey,
             };
             return new OpenAIClient(openAIConfiguration);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error configuring OpenAIClient: {ex.Message}");
+                throw; // Rethrow the exception to indicate a configuration error
+            }
         }
     }
 }
