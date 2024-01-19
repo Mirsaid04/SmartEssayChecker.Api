@@ -18,6 +18,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
     <PackageReference Include="RESTFulSense" Version="2.15.0" />
     <PackageReference Include="Standard.AI.OpenAI" Version="0.6.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
