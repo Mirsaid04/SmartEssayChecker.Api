@@ -25,14 +25,14 @@ namespace SmartEssayChecker.Api.Brokers.OpenAis
         {
             try
             {
-            string apiKey = configuration["AppSettings:ApiKey"];
-            Console.WriteLine($"API Key retrieved: {apiKey}");
+                string apiKey = configuration["AppSettings:ApiKey"];
+                Console.WriteLine($"API Key retrieved: {apiKey}");
 
                 var openAIConfiguration = new OpenAIConfigurations
-            {
-                ApiKey = apiKey,
-            };
-            return new OpenAIClient(openAIConfiguration);
+                {
+                    ApiKey = apiKey,
+                };
+                return new OpenAIClient(openAIConfiguration);
             }
             catch (Exception ex)
             {
